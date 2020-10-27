@@ -1,6 +1,6 @@
 FROM php:7.4.11-fpm
 
-ARG project_dir=/var/www/public_html
+ARG project_dir=/var/www/public
 ARG USER_ID=1000
 ARG GUID=1000
 

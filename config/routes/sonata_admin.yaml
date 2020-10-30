@@ -1,0 +1,31 @@
+admin_area:
+    resource: "@SonataAdminBundle/Resources/config/routing/sonata_admin.xml"
+    prefix: /admin
+
+_sonata_admin:
+    resource: .
+    type: sonata_admin
+    prefix: /admin
+
+admin_logout:
+    path: /admin/logout
+
+gallery:
+    resource: '@SonataMediaBundle/Resources/config/routing/gallery.xml'
+    prefix: /media/gallery
+
+media:
+    resource: '@SonataMediaBundle/Resources/config/routing/media.xml'
+    prefix: /media
+
+admin_sonata_media_media_browser:
+    path: /admin/sonata/media/media/browser
+    controller: CoopTilleuls\Bundle\CKEditorSonataMediaBundle\Controller\MediaAdminController::browserAction
+    defaults:
+        _sonata_admin: sonata.media.admin.media
+
+admin_sonata_media_media_upload:
+    path: /admin/sonata/media/media/upload
+    controller: CoopTilleuls\Bundle\CKEditorSonataMediaBundle\Controller\MediaAdminController::uploadAction
+    defaults:
+        _sonata_admin: sonata.media.admin.media

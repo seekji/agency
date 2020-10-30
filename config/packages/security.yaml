@@ -1,23 +1,52 @@
+imports:
+    - { resource: roles.yaml }
+
 security:
+    encoders:
+        App\Entity\Admin\User:
+            algorithm: auto
+
+        Symfony\Component\Security\Core\User\User: plaintext
+
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         users_in_memory: { memory: null }
+
+        admin_prodiver:
+            id: App\Security\Admin\UserProvider
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
-            anonymous: lazy
-            provider: users_in_memory
+            pattern: ^/(?!(admin/|info_static/))
+            anonymous: ~
 
-            # activate different ways to authenticate
-            # https://symfony.com/doc/current/security.html#firewalls-authentication
+        admin:
+            pattern: ^/admin
+            anonymous: true
+            provider: admin_prodiver
 
-            # https://symfony.com/doc/current/security/impersonating_user.html
-            # switch_user: true
+            guard:
+                authenticators:
+                    - App\Security\Admin\LoginAuthenticator
+
+            form_login:
+                username_parameter: login_form[username]
+                password_parameter: login_form[password]
+                login_path: admin.login
+                check_path: admin.login
+                default_target_path: /admin
+                use_forward: true
+
+            logout:
+                path: /admin/logout
+                target: /admin
 
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/admin/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/logout$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/, role: [ ROLE_ADMIN, ROLE_SONATA_ADMIN ] }
+        - { path: ^/.*, role: IS_AUTHENTICATED_ANONYMOUSLY }

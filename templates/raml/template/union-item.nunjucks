@@ -1,0 +1,30 @@
+{% for alt in item.anyOf -%}
+  {% if alt.type === 'object' or alt.type === 'union' %}
+
+    <div class="items">
+      <strong>{{ alt.originalType | d(alt.displayName) | d(alt.type) }}</strong>
+      {%- if alt.type === 'union' and alt.anyOf.length -%}
+        (union of
+        {% for alt in alt.anyOf -%}
+          {{ alt.originalType | d(alt.displayName) | d(alt.type) }}
+          {%- if not loop.last %} or {% endif -%}
+        {%- endfor -%}
+        )
+
+        {% set oldItem = item %}
+        {% set item = alt %}
+        {% include "union-item.nunjucks" %}
+        {% set item = oldItem %}
+
+
+      {%- endif -%}
+      {% if alt.properties %}
+        <ul>
+          {% for item in alt.properties %}
+            {% include "item.nunjucks" %}
+          {% endfor %}
+        </ul>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+{%- endfor -%}

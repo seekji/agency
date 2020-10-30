@@ -129,6 +129,9 @@
             "ref": "384cec52df45f3bfd46a09930d6960a58872b268"
         }
     },
+    "justinrainbow/json-schema": {
+        "version": "5.1.0"
+    },
     "knplabs/doctrine-behaviors": {
         "version": "v2.0.7"
     },
@@ -165,8 +168,26 @@
     "nikic/php-parser": {
         "version": "v4.10.2"
     },
+    "nyholm/psr7": {
+        "version": "1.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "1.0",
+            "ref": "7c0a9352a57376f04f5444e74565102c3a23d0c7"
+        },
+        "files": [
+            "config/packages/nyholm_psr7.yaml"
+        ]
+    },
     "ocramius/proxy-manager": {
         "version": "2.9.1"
+    },
+    "oodle/inflect": {
+        "version": "v0.2.0"
+    },
+    "php-http/message-factory": {
+        "version": "v1.0.2"
     },
     "phpdocumentor/reflection-common": {
         "version": "2.2.0"
@@ -183,6 +204,9 @@
     "psr/container": {
         "version": "1.0.0"
     },
+    "psr/http-factory": {
+        "version": "1.0.1"
+    },
     "psr/http-message": {
         "version": "1.0.1"
     },
@@ -194,6 +218,12 @@
     },
     "ralouphie/getallheaders": {
         "version": "3.0.3"
+    },
+    "raml/php-raml-parser": {
+        "version": "1.0.x-dev"
+    },
+    "raml/raml-bundle": {
+        "version": "1.0.x-dev"
     },
     "ramsey/collection": {
         "version": "1.1.1"
@@ -498,6 +528,9 @@
     "symfony/property-info": {
         "version": "v4.4.15"
     },
+    "symfony/psr-http-message-bridge": {
+        "version": "v1.3.0"
+    },
     "symfony/routing": {
         "version": "4.2",
         "recipe": {
@@ -664,5 +697,8 @@
     },
     "webmozart/assert": {
         "version": "1.9.1"
+    },
+    "willdurand/negotiation": {
+        "version": "v2.3.1"
     }
 }

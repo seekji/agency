@@ -1,0 +1,4 @@
+published_schema:
+  path: /schema
+  defaults:
+    _controller: "raml.raml_bundle.controller.service_life_cycle:ramlAction"

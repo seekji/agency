@@ -1,0 +1,32 @@
+{
+  "name": "raml/raml-bundle",
+  "description": "raml symfony integration",
+  "license": "proprietary",
+  "type": "library",
+  "require": {
+    "php": ">=7.0",
+    "symfony/psr-http-message-bridge": "^1.0",
+    "nyholm/psr7": "^1.2",
+    "symfony/http-foundation": "^3.2|^4.3|^5.0|^5.1",
+    "symfony/config": "^3.2|^4.3|^5.0|^5.1",
+    "symfony/dependency-injection": "^3.2|^4.3|^5.0|^5.1",
+    "symfony/http-kernel": "^3.2|^4.3|^5.0|^5.1",
+    "psr/http-message": "^1.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^6.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "Raml\\RamlBundle\\": [ "src/RamlBundle" ]
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Raml\\Tests\\RamlBundle\\": [ "tests/RamlBundle" ]
+    }
+  },
+  "extra": {
+    "branch-version": "1.0-dev"
+  }
+}

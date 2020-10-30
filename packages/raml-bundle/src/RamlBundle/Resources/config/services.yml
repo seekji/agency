@@ -1,0 +1,82 @@
+services:
+  raml.raml_bundle.controller.service_life_cycle:
+    class: Raml\RamlBundle\Controller\ServiceLifeCycleController
+    public: true
+    arguments:
+      - "@file_locator"
+      - "%raml.raml.spec_file%"
+
+  raml.raml_bundle.request_validation.listener:
+    class: Raml\RamlBundle\Listener\SchemaValidationListener
+    arguments:
+      - "@raml.raml_bundle.psr7.message_factory"
+      - "@raml.raml_bundle.request_validator"
+      - "@raml.raml_bundle.response_validator"
+      - "%raml.raml.exclude_url_prefixes%"
+      - "%raml.raml.include_url_prefixes%"
+    tags:
+      - { name: kernel.event_listener, event: kernel.request }
+      - { name: kernel.event_listener, event: kernel.response }
+      - { name: kernel.event_listener, event: kernel.exception }
+
+  raml.raml_bundle.psr7.message_factory:
+    class: Raml\RamlBundle\Psr7Bridge\HttpMessageFactory
+    public: false
+
+  raml.raml_bundle.request_validator:
+    class: Raml\Validator\RequestValidator
+    public: false
+    arguments:
+      - "@raml.raml_bundle.validator.schema_helper"
+      - "@raml.raml_bundle.validator.negotiator"
+
+  raml.raml_bundle.response_validator:
+    class: Raml\Validator\ResponseValidator
+    public: false
+    arguments:
+      - "@raml.raml_bundle.validator.schema_helper"
+      - "@raml.raml_bundle.validator.negotiator"
+
+  raml.raml_bundle.validator.negotiator:
+    class: Negotiation\Negotiator
+    public: false
+
+  raml.raml_bundle.validator.schema_helper:
+    class: Raml\Validator\ValidatorSchemaHelper
+    public: false
+    arguments:
+      - "@raml.raml_bundle.raml.schema"
+
+  raml.raml_bundle.raml.parse_configuration:
+    class: Raml\RamlBundle\Raml\ParseConfigurationTraversalToggle
+    public: false
+    arguments:
+      - "%raml.raml.allow_directory_traversal%"
+
+  raml.raml_bundle.raml.parser:
+    class: Raml\Parser
+    public: false
+    calls:
+      - method: setConfiguration
+        arguments:
+          - '@raml.raml_bundle.raml.parse_configuration'
+
+  raml.raml_bundle.raml.api_definition_factory:
+    class: Raml\RamlBundle\Raml\RamlDefinitionFactory
+    arguments:
+      - "@raml.raml_bundle.raml.loader"
+      - "%kernel.debug%"
+      - "%raml.raml.cache_dir%"
+
+  raml.raml_bundle.raml.loader:
+    class: Raml\RamlBundle\Raml\RamlFileLoader
+    arguments:
+      - "@file_locator"
+      - "@raml.raml_bundle.raml.parser"
+
+  raml.raml_bundle.raml.schema:
+    class: Raml\ApiDefinition
+    factory: ["@raml.raml_bundle.raml.api_definition_factory", create]
+    public: false
+    arguments:
+      - "%raml.raml.spec_file%"

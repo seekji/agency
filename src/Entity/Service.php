@@ -4,14 +4,22 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Entity\Locale\LocaleInterface;
+use App\Entity\Locale\LocaleTrait;
 use App\Repository\ServiceRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Knp\DoctrineBehaviors\Contract\Entity\SluggableInterface;
+use Knp\DoctrineBehaviors\Contract\Entity\TimestampableInterface;
+use Knp\DoctrineBehaviors\Model\Sluggable\SluggableTrait;
+use Knp\DoctrineBehaviors\Model\Timestampable\TimestampableTrait;
 
 /**
  * @ORM\Entity(repositoryClass=ServiceRepository::class)
  */
-class Service
+class Service implements SluggableInterface, TimestampableInterface, LocaleInterface
 {
+    use SluggableTrait, TimestampableTrait, LocaleTrait;
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -22,12 +30,12 @@ class Service
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $title;
+    private ?string $title;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $sort;
+    private ?int $sort = 0;
 
     public function getId(): ?int
     {
@@ -61,5 +69,10 @@ class Service
     public function __toString(): string
     {
         return $this->title ?: '';
+    }
+
+    public function getSluggableFields(): array
+    {
+        return ['title'];
     }
 }

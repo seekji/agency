@@ -10,3 +10,15 @@ services:
     arguments: [~, App\Entity\Branch, SonataAdminBundle:CRUD]
     tags:
       - { name: sonata.admin, manager_type: orm, audit: false, group: Кейсы, label: Список отраслей }
+
+  app.admin.service:
+    class: App\Admin\ServiceAdmin
+    arguments: [ ~, App\Entity\Service, SonataAdminBundle:CRUD ]
+    tags:
+      - { name: sonata.admin, manager_type: orm, audit: false, group: Кейсы, label: Список услуг }
+
+  app.admin.partner:
+    class: App\Admin\PartnerAdmin
+    arguments: [ ~, App\Entity\Partner, SonataAdminBundle:CRUD ]
+    tags:
+      - { name: sonata.admin, manager_type: orm, audit: false, group: Основной контент, label: Список партнеров }

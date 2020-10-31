@@ -4,16 +4,25 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Application\Sonata\MediaBundle\Entity\Media;
+use App\Entity\Locale\LocaleInterface;
+use App\Entity\Locale\LocaleTrait;
 use App\Repository\CasesRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Knp\DoctrineBehaviors\Contract\Entity\SluggableInterface;
+use Knp\DoctrineBehaviors\Contract\Entity\TimestampableInterface;
+use Knp\DoctrineBehaviors\Model\Sluggable\SluggableTrait;
+use Knp\DoctrineBehaviors\Model\Timestampable\TimestampableTrait;
 
 /**
  * @ORM\Entity(repositoryClass=CasesRepository::class)
  */
-class Cases
+class Cases implements SluggableInterface, TimestampableInterface, LocaleInterface
 {
+    use SluggableTrait, TimestampableTrait, LocaleTrait;
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -36,6 +45,20 @@ class Cases
      * @ORM\JoinColumn(nullable=false)
      */
     private ?Branch $branch;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private ?string $excerpt;
+
+    /**
+     * @ORM\ManyToOne(
+     *     targetEntity="App\Application\Sonata\MediaBundle\Entity\Media",
+     *     cascade={"persist"},
+     * )
+     * @ORM\JoinColumn(onDelete="SET NULL")
+     */
+    private ?Media $previewPicture;
 
     public function __construct()
     {
@@ -100,4 +123,32 @@ class Cases
         return $this->title ?: '';
     }
 
+    public function getExcerpt(): ?string
+    {
+        return $this->excerpt;
+    }
+
+    public function setExcerpt(?string $excerpt): self
+    {
+        $this->excerpt = $excerpt;
+
+        return $this;
+    }
+
+    public function getPreviewPicture(): ?Media
+    {
+        return $this->previewPicture;
+    }
+
+    public function setPreviewPicture(?Media $media): self
+    {
+        $this->previewPicture = $media;
+
+        return $this;
+    }
+
+    public function getSluggableFields(): array
+    {
+        return ['title'];
+    }
 }

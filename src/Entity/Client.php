@@ -4,14 +4,20 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Entity\Locale\LocaleInterface;
+use App\Entity\Locale\LocaleTrait;
 use App\Repository\ClientRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Knp\DoctrineBehaviors\Contract\Entity\TimestampableInterface;
+use Knp\DoctrineBehaviors\Model\Timestampable\TimestampableTrait;
 
 /**
  * @ORM\Entity(repositoryClass=ClientRepository::class)
  */
-class Client
+class Client implements TimestampableInterface, LocaleInterface
 {
+    use TimestampableTrait, LocaleTrait;
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue

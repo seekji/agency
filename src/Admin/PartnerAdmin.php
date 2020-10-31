@@ -9,9 +9,10 @@ use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Form\Type\ModelListType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
-class BranchAdmin extends AbstractAdmin
+class PartnerAdmin extends AbstractAdmin
 {
     protected function configureBatchActions($actions)
     {
@@ -26,10 +27,11 @@ class BranchAdmin extends AbstractAdmin
     {
         $filter
             ->add('id')
+            ->add('name')
+            ->add('isActive')
             ->add('locale', null, [], ChoiceType::class, [
                 'choices' => array_flip(LocaleInterface::LOCALE_LIST)
-            ])
-            ->add('title');
+            ]);
     }
 
     protected function configureListFields(ListMapper $list)
@@ -38,8 +40,9 @@ class BranchAdmin extends AbstractAdmin
 
         $list
             ->add('id')
-            ->add('title')
+            ->add('name')
             ->add('locale', 'choice', ['choices' => LocaleInterface::LOCALE_LIST])
+            ->add('isActive')
             ->add('_action', null, [
                 'actions' => [
                     'edit' => [],
@@ -54,8 +57,9 @@ class BranchAdmin extends AbstractAdmin
             ->add('locale', ChoiceType::class, [
                 'choices' => array_flip(LocaleInterface::LOCALE_LIST)
             ])
-            ->add('title')
+            ->add('name')
+            ->add('picture', ModelListType::class, ['required' => true], ['link_parameters' => ['context' => 'partners']])
+            ->add('isActive')
             ->add('sort');
     }
-
 }

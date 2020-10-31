@@ -62,7 +62,7 @@ class Cases
     /**
      * @return Collection|Service[]
      */
-    public function getServices(): Collection
+    public function getServices(): ?Collection
     {
         return $this->services;
     }
@@ -93,6 +93,11 @@ class Cases
         $this->branch = $branch;
 
         return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->title ?: '';
     }
 
 }

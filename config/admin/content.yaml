@@ -1,0 +1,12 @@
+services:
+  app.admin.case:
+    class: App\Admin\CaseAdmin
+    arguments: [~, App\Entity\Cases, SonataAdminBundle:CRUD]
+    tags:
+      - { name: sonata.admin, manager_type: orm, audit: false, group: Кейсы, label: Список кейсов }
+
+  app.admin.branch:
+    class: App\Admin\BranchAdmin
+    arguments: [~, App\Entity\Branch, SonataAdminBundle:CRUD]
+    tags:
+      - { name: sonata.admin, manager_type: orm, audit: false, group: Кейсы, label: Список отраслей }

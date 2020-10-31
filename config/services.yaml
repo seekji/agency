@@ -43,3 +43,16 @@ services:
             $env: '%kernel.environment%'
         tags:
             - { name: kernel.event_listener, event: kernel.exception, method: onKernelException, priority: 1 }
+
+    # Param converters
+    App\Configuration\Request\ParamConverter\QueryStringConverter:
+        tags:
+            - { name: request.param_converter, priority: 2, converter: query_string_converter }
+
+    App\Configuration\Request\ParamConverter\DeserializeRequestConverter:
+        tags:
+            - { name: request.param_converter, priority: 1, converter: deserialize_request_converter }
+
+    App\Handler\Serializer\MediaSerializer:
+        tags:
+            - { name: jms_serializer.handler, type: App\Application\Sonata\MediaBundle\Entity\Media, direction: serialization, format: json, method: serializeEvent }

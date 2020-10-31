@@ -1,0 +1,49 @@
+{
+  "translations": [
+    {
+      "key": "homepage.slider.title",
+      "translation": "Slider title"
+    },
+    {
+      "key": "homepage.slider.text",
+      "translation": "Slider text"
+    }
+  ],
+  "socialLinks": [
+    {
+      "name": "instagram",
+      "link": "http://instagram.com"
+    },
+    {
+      "name": "facebook",
+      "link": "http://facebook.com"
+    }
+  ],
+  "achievements": [
+    {
+      "count": 60,
+      "countType": "%",
+      "title": "клиентов",
+      "description": "довольны"
+    }
+  ],
+  "privacy": "<p>empty privacy&quot;</p>",
+  "phone": "+79999999999",
+  "email": "test@test.com",
+  "video": {
+    "id": 2,
+    "title": "Rozetked",
+    "href": "https://www.youtube.com/watch?v=GxXqEpSpY2w",
+    "picture": {
+      "filename": "image.png",
+      "size": "0.7 kB",
+      "copyright": null,
+      "description": null,
+      "src": "/uploads/media/videos/0001/01/b4100d7ba364e65d24486995fa909078218e7693.png",
+      "height": 287,
+      "width": 327,
+      "context": "videos",
+      "id": 3
+    }
+  }
+}

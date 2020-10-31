@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace App\Dto\Api\Settings;
 
+use App\Dto\Api\LocaleTrait;
 use JMS\Serializer\Annotation\Type;
 
-class SettingsRequest
+class ListRequest
 {
-
+    use LocaleTrait;
 }

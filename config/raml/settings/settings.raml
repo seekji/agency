@@ -1,6 +1,20 @@
 get:
+  is: [hasErrors, hasCommonErrors, localable]
   description: "Список настроек"
   responses:
     200:
       body:
-        application/json: ~
+        application/json:
+          type: settingsTypes.AllSettingsResponse
+          example: !include examples/AllSettingsResponse.json
+
+/translations:
+  get:
+    is: [hasErrors, hasCommonErrors, localable]
+    description: "Список переводов по локали"
+    responses:
+      200:
+        body:
+          application/json:
+            type: settingsTypes.TranslationListResponse
+            example: !include examples/TranslationsListResponse.json

@@ -22,3 +22,15 @@ services:
     arguments: [ ~, App\Entity\Partner, SonataAdminBundle:CRUD ]
     tags:
       - { name: sonata.admin, manager_type: orm, audit: false, group: Основной контент, label: Список партнеров }
+
+  app.admin.settings:
+    class: App\Admin\SettingsAdmin
+    arguments: [ ~, App\Entity\Settings, SonataAdminBundle:CRUD ]
+    tags:
+      - { name: sonata.admin, manager_type: orm, audit: false, group: Основной контент, label: Общие настройки }
+
+  app.admin.video:
+    class: App\Admin\VideoAdmin
+    arguments: [ ~, App\Entity\Video, SonataAdminBundle:CRUD ]
+    tags:
+      - { name: sonata.admin, manager_type: orm, audit: false, group: Основной контент, label: Видео ролики }

@@ -42,5 +42,4 @@ class Picture
         $this->size = $media->getSize();
         $this->path = $media->getProviderName();
     }
-
 }

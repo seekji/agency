@@ -25,7 +25,7 @@ class ApiTransformerListener
 
         $request = $event->getRequest();
 
-        if(stristr($request->getRequestUri(), 'admin')) {
+        if (stristr($request->getRequestUri(), 'admin')) {
             return;
         }
 

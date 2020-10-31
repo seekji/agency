@@ -22,6 +22,10 @@ sonata_media:
       providers:
         - sonata.media.provider.image
 
+    videos:
+      providers:
+        - sonata.media.provider.image
+
     partners:
       providers:
         - sonata.media.provider.image

@@ -1,0 +1,103 @@
+#%RAML 1.0 Library
+
+types:
+  Translation:
+    properties:
+      key:
+        description: Ключ
+        type: string
+      translation:
+        description: Перевод ключа
+        type: string
+
+  SocialLink:
+    properties:
+      name:
+        description: Наименование соц. сети
+        type: string
+      link:
+        description: Ссылка
+        type: string
+
+  Video:
+    properties:
+      title:
+        type: string
+      href:
+        type: string
+      picture:
+        type: Picture
+
+  Achievement:
+    properties:
+      count:
+        description: Число
+        type: integer
+      countType:
+        description: Тип числа
+        type: string
+      title:
+        description: Заголовок
+        type: string
+      description:
+        description: Описание достижения
+        type: string
+
+  Picture:
+    properties:
+      id:
+        type: integer
+      src:
+        type: string
+      filename:
+        type: string
+      description:
+        type: string | nil
+        required: false
+      height:
+        type: integer | nil
+        required: false
+      width:
+        type: integer | nil
+        required: false
+      context:
+        type: string | nil
+        required: false
+      copyright:
+        type: string | nil
+        required: false
+      size:
+        type: string
+
+  TranslationListResponse:
+    properties:
+      translations:
+        description: Список ключей-переводов
+        type: Translation[]
+
+  AllSettingsResponse:
+    properties:
+      phone:
+        description: Контактный телефон
+        type: string
+      email:
+        description: Email-адрес
+        type: string
+      privacy:
+        description: Политика конфиденциальности
+        type: string
+      socialLinks:
+        description: Список соц. сетей
+        type: SocialLink[] | nil
+        required: false
+      achievements:
+        description: Список достижений
+        type: Achievement[] | nil
+        required: false
+      translations:
+        description: Список ключей-переводов
+        type: Translation[] | nil
+        required: false
+      video:
+        description: Видео для слайда
+        type: Video

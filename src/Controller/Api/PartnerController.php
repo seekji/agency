@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Controller\Api;
 
-use App\Dto\Api\Cases\ListRequest;
-use App\Service\CaseService;
+use App\Dto\Api\Partner\ListRequest;
+use App\Service\PartnerService;
 use JMS\Serializer\SerializerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -13,16 +13,16 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/api/cases")
+ * @Route("/api/partners")
  */
-class CaseController extends AbstractController
+class PartnerController extends AbstractController
 {
-    private CaseService $caseService;
+    private PartnerService $partnerService;
     private SerializerInterface $serializer;
 
-    public function __construct(CaseService $caseService, SerializerInterface $serializer)
+    public function __construct(PartnerService $partnerService, SerializerInterface $serializer)
     {
-        $this->caseService = $caseService;
+        $this->partnerService = $partnerService;
         $this->serializer = $serializer;
     }
 
@@ -31,9 +31,9 @@ class CaseController extends AbstractController
      */
     public function cases(ListRequest $request): Response
     {
-        $cases = $this->caseService->findCases($request);
+        $data = $this->partnerService->findPartners($request);
 
-        return new JsonResponse($this->serializer->serialize($cases, 'json'), 200, [], true);
+        return new JsonResponse($this->serializer->serialize($data, 'json'), 200, [], true);
     }
 
 }

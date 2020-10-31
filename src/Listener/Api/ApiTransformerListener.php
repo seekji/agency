@@ -22,6 +22,13 @@ class ApiTransformerListener
 
     public function onKernelException(ExceptionEvent $event): void
     {
+
+        $request = $event->getRequest();
+
+        if(stristr($request->getRequestUri(), 'admin')) {
+            return;
+        }
+
         $exception = $event->getThrowable();
         $message = $exception->getMessage();
 

@@ -1,9 +1,10 @@
 #%RAML 1.0 Library
 
 types:
-  Case:
+  VndCustomErrorJson:
     properties:
-      id:
-        type: integer
-      title:
+      code:
         type: string
+      message:
+        type: string
+    additionalProperties: false

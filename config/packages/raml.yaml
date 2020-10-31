@@ -3,5 +3,5 @@ raml:
     spec_file: "%kernel.project_dir%/config/raml/main.raml"
     cache_dir: "%kernel.cache_dir%/raml_cache/"
     include_url_prefixes: ["/api"]
-    exclude_url_prefixes: ["/admin"]
+    exclude_url_prefixes: ["/admin", "/_profiler", "/_wdt"]
     allow_directory_traversal: false

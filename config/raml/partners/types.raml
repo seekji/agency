@@ -1,0 +1,19 @@
+#%RAML 1.0 Library
+
+types:
+  Partner:
+    properties:
+      id:
+        description: Идентификатор
+        type: integer
+      name:
+        description: Имя партнерая
+        type: string
+      sort:
+        description: Индекс сортировки
+        type: integer
+
+  ListResponse:
+    properties:
+      partners:
+        type: Partner[]

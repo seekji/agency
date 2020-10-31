@@ -1,12 +1,18 @@
 #%RAML 1.0
 
 title: Agency
-version: 1.0
+version: 0.1
 mediaType: application/json
+urlPrefix: /api
 
 uses:
   types: types.raml
+  caseTypes: cases/types.raml
+  serviceTypes: services/types.raml
+  partnerTypes: partners/types.raml
 
 traits: !include common.raml
 
-/api/settings: !include settings/settings.raml
+/cases: !include cases/cases.raml
+/services: !include services/services.raml
+/partners: !include partners/partners.raml

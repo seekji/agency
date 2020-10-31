@@ -1,0 +1,8 @@
+get:
+  is: [hasErrors, hasCommonErrors, localable, pageable]
+  description: "Список кейсов"
+  responses:
+    200:
+      body:
+        application/json:
+          type: caseTypes.ListResponse

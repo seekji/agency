@@ -1,41 +1,56 @@
+localable:
+  queryParameters:
+    locale:
+      description: Локаль для переводов
+      type: string
+      example: ru
+      default: ru
+
+pageable:
+  queryParameters:
+    limit:
+      description: Кол-во записей в списке
+      type: number
+      required: false
+      minimum: 1
+      maximum: 30
+    offset:
+      description: Отступ для записей
+      type: number
+      minimum: 0
+      required: false
+
 hasCommonErrors:
   responses:
     404:
       body:
         application/json:
-          type: VndElamaErrorJson
+          type: VndCustomErrorJson
 
 hasHeaderMissing:
   responses:
     403:
       body:
         application/json:
-          type: VndElamaErrorJson
+          type: VndCustomErrorJson
 
-hasReportErrors:
+hasErrors:
   responses:
     400:
       body:
         application/json:
-          type: VndElamaErrorJson
+          type: VndCustomErrorJson
       description: |
         Описание кодов ошибок <br>
-            1 - НДС не поддерживается для заданной страны <br>
-            2 - Слишком большой период запроса статистики <br>
-            3 - У заданного пользователя не найдены переданные аккаунты <br>
-            4 - Страна не поддерживается <br>
-            5 - Фильтрация по переданному полю невозможна <br>
-            6 - Сортировка по переданному полю невозможна <br>
-            7 - Данное поле доступно только в фильтрах и (или) сортировке
+
     422:
       body:
         application/json:
-          type: VndElamaErrorJson
+          type: VndCustomErrorJson
       description: |
         Описание кодов ошибок <br>
-            1 - Сервис фильтрации вернул слишком большой результат <br>
-            2 - Ошибка сервиса фильтрации <br>
+
     500:
       body:
         application/json:
-          type: VndElamaErrorJson
+          type: VndCustomErrorJson

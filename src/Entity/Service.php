@@ -12,9 +12,11 @@ use Knp\DoctrineBehaviors\Contract\Entity\SluggableInterface;
 use Knp\DoctrineBehaviors\Contract\Entity\TimestampableInterface;
 use Knp\DoctrineBehaviors\Model\Sluggable\SluggableTrait;
 use Knp\DoctrineBehaviors\Model\Timestampable\TimestampableTrait;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass=ServiceRepository::class)
+ * @UniqueEntity(fields={"slug", "locale"}, message="slug.not_unique")
  */
 class Service implements SluggableInterface, TimestampableInterface, LocaleInterface
 {
@@ -74,5 +76,10 @@ class Service implements SluggableInterface, TimestampableInterface, LocaleInter
     public function getSluggableFields(): array
     {
         return ['title'];
+    }
+
+    public function shouldRegenerateSlugOnUpdate(): bool
+    {
+        return false;
     }
 }

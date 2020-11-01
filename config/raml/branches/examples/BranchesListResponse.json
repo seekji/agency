@@ -1,0 +1,14 @@
+{
+  "branches": [
+    {
+      "id": 1,
+      "sort": 0,
+      "title": "test"
+    },
+    {
+      "id": 2,
+      "sort": 0,
+      "title": "Test test"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+#%RAML 1.0 Library
+
+types:
+  Branch:
+    properties:
+      id:
+        description: Идентификатор
+        type: integer
+      title:
+        description: Наименование услуги
+        type: string
+      sort:
+        description: Индекс сортировки
+        type: integer
+
+  ListResponse:
+    properties:
+      branches:
+        type: Branch[]

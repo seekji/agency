@@ -20,7 +20,7 @@ framework:
         log: true
 
     translator:
-        fallbacks: ['en']
+        fallbacks: ['ru']
 
     form: ~
     csrf_protection: true

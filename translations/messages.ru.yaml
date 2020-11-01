@@ -1,0 +1,56 @@
+Настройки robots: Robots.txt
+Redirect Rule List: Список правил редиректа
+Id: Id
+Rule List: Список правил
+Content: Контент (содержимое)
+Name: Название
+
+sonata.media.provider.dailymotion: Дайлимоушен
+sonata.media.provider.youtube: Ютуб
+sonata.media.provider.image: Изображение
+sonata.media.provider.file: Файл
+sonata.media.provider.vimeo: Вимео
+default: Стандартный
+Title: Название
+Preview: Обзор
+message_close: Закрыть сообщение
+Action: Действия
+Property: Приоритет
+Rule Create: Создание правила
+Phone: Контактный телефон
+Created At: Дата создания
+Updated At: Дата обновления
+Hall Create: Добавить площадку
+City List: Список городов
+City Create: Добавить город
+Short Name: Короткое название
+Description: Описание
+Is Default: По-умолчанию
+Biography: Биография
+Link: Ссылка
+Is Active: Активен?
+Is Published: Опубликован?
+Picture: Картинка
+Preview Description: Текст анонса
+Is Canceled: Отменен?
+Color: Цвет
+Big Picture: Большая картинка
+Is Preview Big: Большая картинка?
+Started At: Дата начала
+Tickets: Билеты
+Time: Время
+Slug: URL-Алиас
+Subscribe Text: Текст для подписки
+Tag Text: Текст для тегов
+Age: Возрастные ограничения
+Social Links: Ссылки на социальные сети
+Additional Text: Дополнительное описание
+Sort: Сортировка
+Text: Текст
+Template: Шаблон
+Small Text: Маленький текст
+Is Main: Основной?
+Meta Title: Заголовок страницы
+Meta Description: Описание страницы
+Meta Keywords: Ключи страницы
+Media: Медиа

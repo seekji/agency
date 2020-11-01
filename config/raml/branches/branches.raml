@@ -1,0 +1,9 @@
+get:
+  is: [hasErrors, hasCommonErrors, localable, pageable]
+  description: "Список отраслей"
+  responses:
+    200:
+      body:
+        application/json:
+          type: branchTypes.ListResponse
+          example: !include examples/BranchesListResponse.json

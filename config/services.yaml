@@ -57,6 +57,6 @@ services:
         tags:
             - { name: jms_serializer.handler, type: App\Application\Sonata\MediaBundle\Entity\Media, direction: serialization, format: json, method: serializeEvent }
 
-    App\EventListener\UniqueSlugListener:
+    App\Listener\UniqueSlugListener:
         tags:
             - { name: doctrine.event_listener, event: prePersist, connection: default }

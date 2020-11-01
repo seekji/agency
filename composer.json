@@ -12,6 +12,7 @@
         "doctrine/orm": "^2.7",
         "friendsofsymfony/ckeditor-bundle": "^2.2",
         "knplabs/doctrine-behaviors": "^2.0",
+        "nelmio/cors-bundle": "^2.1",
         "phpdocumentor/reflection-docblock": "^5.2",
         "raml/php-raml-parser": "1.0.x-dev",
         "raml/raml-bundle": "1.0.x-dev",

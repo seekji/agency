@@ -14,10 +14,9 @@ use JMS\Serializer\Annotation\Type;
 class ListResponse
 {
     /**
-     * @var Translation[]
-     * @Type("array<App\Dto\Api\Settings\Translation\Translation>")
+     * @Type("array")
      */
-    public $translations;
+    public $translations = [];
 
     /**
      * @var SocialLink[]
@@ -60,7 +59,8 @@ class ListResponse
 
         if ($settings->getTranslations()) {
             foreach ($settings->getTranslations() as $translation) {
-                $this->translations[] = new Translation($translation);
+                $translationObject = new Translation($translation);
+                $this->translations[$translationObject->key] = $translationObject->translation;
             }
         }
 

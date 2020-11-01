@@ -1,12 +1,6 @@
 {
-  "translations": [
-    {
-      "key": "homepage.slide.title",
-      "translation": "Вот это тайтл конечно"
-    },
-    {
-      "key": "homepage.slide.text",
-      "translation": "Ну и текста добавим"
-    }
-  ]
+  "translations": {
+    "homepage.slider.title": "Slider title",
+    "homepage.slider.text": "Slider text"
+  }
 }

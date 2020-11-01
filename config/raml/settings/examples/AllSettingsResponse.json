@@ -1,14 +1,8 @@
 {
-  "translations": [
-    {
-      "key": "homepage.slider.title",
-      "translation": "Slider title"
-    },
-    {
-      "key": "homepage.slider.text",
-      "translation": "Slider text"
-    }
-  ],
+  "translations": {
+    "homepage.slider.title": "Slider title",
+    "homepage.slider.text": "Slider text"
+  },
   "socialLinks": [
     {
       "name": "instagram",

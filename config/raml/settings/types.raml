@@ -73,7 +73,7 @@ types:
     properties:
       translations:
         description: Список ключей-переводов
-        type: Translation[]
+        type: string[]
 
   AllSettingsResponse:
     properties:
@@ -96,8 +96,7 @@ types:
         required: false
       translations:
         description: Список ключей-переводов
-        type: Translation[] | nil
-        required: false
+        type: string[]
       video:
         description: Видео для слайда
         type: Video

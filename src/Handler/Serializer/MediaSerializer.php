@@ -44,6 +44,7 @@ class MediaSerializer
     {
         switch ($provider) {
             case 'sonata.media.provider.file':
+            case 'sonata.media.provider.file.svg':
                 return 'imageProvider';
                 break;
 

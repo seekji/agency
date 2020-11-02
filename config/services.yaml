@@ -5,6 +5,7 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
 
+
 imports:
     - { resource: admin/content.yaml }
 
@@ -60,3 +61,19 @@ services:
     App\Listener\UniqueSlugListener:
         tags:
             - { name: doctrine.event_listener, event: prePersist, connection: default }
+
+    # Sonata
+    sonata.media.provider.file.svg:
+        class: App\Application\Sonata\MediaBundle\Provider\SvgProvider
+        tags:
+            - { name: sonata.media.provider }
+        arguments:
+            - 'sonata.media.provider.file.svg'
+            - '@sonata.media.filesystem.local'
+            - '@sonata.media.cdn.server'
+            - '@sonata.media.generator.default'
+            - '@sonata.media.thumbnail.format'
+            - [ 'gif', 'svg', 'jpg', 'jpeg', 'png' ]
+            - [ 'image/svg+xml', 'image/gif', 'image/jpeg', 'image/pjpeg', 'image/png' ]
+        calls:
+            - [ setTemplates, [ { helper_thumbnail: "@@SonataMedia/Provider/thumbnail.html.twig", helper_view: "@@SonataMedia/Provider/view_file.html.twig" } ] ]

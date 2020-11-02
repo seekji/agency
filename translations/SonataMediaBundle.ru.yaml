@@ -1,2 +1,5 @@
 Gallery: Галерея
 Options: Опции
+
+sonata.media.provider.file.svg.description: Загрузка svg-картинок
+sonata.media.provider.file.svg: Svg-файл

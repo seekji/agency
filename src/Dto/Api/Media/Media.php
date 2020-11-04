@@ -33,7 +33,7 @@ class Media
     {
         $this->id = $media->getId();
         $this->title = $media->getTitle();
-        $this->type = 'test';
+        $this->type = \App\Entity\Media::TYPE_LIST[$media->getType()];
 
         if ($media->getMedia() instanceof SonataMedia) {
             $this->file = $media->getMedia();

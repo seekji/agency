@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20201104123832 extends AbstractMigration
+final class Version20201104132114 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -24,7 +24,7 @@ final class Version20201104123832 extends AbstractMigration
         $this->addSql('CREATE TABLE media (id INT NOT NULL, media_id INT DEFAULT NULL, title VARCHAR(255) DEFAULT NULL, type INT NOT NULL, href VARCHAR(255) DEFAULT NULL, created_at TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, updated_at TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE INDEX IDX_6A2CA10CEA9FDD75 ON media (media_id)');
         $this->addSql('ALTER TABLE media ADD CONSTRAINT FK_6A2CA10CEA9FDD75 FOREIGN KEY (media_id) REFERENCES media__media (id) ON DELETE SET NULL NOT DEFERRABLE INITIALLY IMMEDIATE');
-        $this->addSql('ALTER TABLE service ADD media_id INT NOT NULL');
+        $this->addSql('ALTER TABLE service ADD media_id INT DEFAULT NULL');
         $this->addSql('ALTER TABLE service ADD CONSTRAINT FK_E19D9AD2EA9FDD75 FOREIGN KEY (media_id) REFERENCES media (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
         $this->addSql('CREATE INDEX IDX_E19D9AD2EA9FDD75 ON service (media_id)');
         $this->addSql('ALTER TABLE site_user ADD slug VARCHAR(255) DEFAULT NULL');

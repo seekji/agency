@@ -41,7 +41,7 @@ class Service implements SluggableInterface, TimestampableInterface, LocaleInter
 
     /**
      * @ORM\ManyToOne(targetEntity=Media::class)
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $media;
 

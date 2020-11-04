@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Entity\Admin;
 
 use Doctrine\ORM\Mapping as ORM;
+use Knp\DoctrineBehaviors\Contract\Entity\SluggableInterface;
 use Knp\DoctrineBehaviors\Model\Sluggable\SluggableTrait;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -15,7 +16,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @UniqueEntity(fields={"email"})
  * @UniqueEntity(fields={"username"})
  */
-class User implements UserInterface, \Serializable
+class User implements UserInterface, \Serializable, SluggableInterface
 {
     use SluggableTrait;
 
@@ -237,7 +238,7 @@ class User implements UserInterface, \Serializable
 
     public function getSluggableFields(): array
     {
-        return ['id'];
+        return ['username'];
     }
 
     protected function getRegenerateSlugOnUpdate(): bool

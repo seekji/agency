@@ -60,7 +60,9 @@ class ServiceAdmin extends AbstractAdmin
                     ->add('locale', ChoiceType::class, [
                         'choices' => array_flip(LocaleInterface::LOCALE_LIST)
                     ])
-                    ->add('title');
+                    ->add('title')
+                    ->add('media', ModelType::class)
+        ;
 
         if ($this->isCurrentRoute('edit', 'app.admin.service')) {
             $form->add('slug', TextType::class);

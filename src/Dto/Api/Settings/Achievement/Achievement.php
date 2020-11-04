@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Dto\Api\Settings\Achievement;
 
-use App\Form\Admin\AchievementType;
 use JMS\Serializer\Annotation\Type;
 
 class Achievement
@@ -32,7 +31,7 @@ class Achievement
     public function __construct(array $achievement)
     {
         $this->count = $achievement['count'];
-        $this->countType = AchievementType::TYPES[$achievement['count_type']];
+        $this->countType = $achievement['count_type'];
         $this->title = $achievement['title'];
         $this->description = $achievement['description'];
     }

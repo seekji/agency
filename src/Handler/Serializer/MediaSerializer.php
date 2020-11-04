@@ -8,6 +8,7 @@ use App\Application\Sonata\MediaBundle\Entity\Media;
 use JMS\Serializer\JsonSerializationVisitor;
 use Sonata\MediaBundle\Provider\ImageProvider;
 use Sonata\MediaBundle\Provider\FileProvider;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Routing\RouterInterface;
 
 class MediaSerializer
@@ -15,24 +16,27 @@ class MediaSerializer
     private ImageProvider $imageProvider;
     private FileProvider $fileProvider;
     private RouterInterface $router;
+    private RequestStack $requestStack;
 
-    public function __construct(ImageProvider $imageProvider, FileProvider $fileProvider, RouterInterface $router)
+    public function __construct(ImageProvider $imageProvider, FileProvider $fileProvider, RouterInterface $router, RequestStack $requestStack)
     {
         $this->imageProvider = $imageProvider;
         $this->fileProvider = $fileProvider;
         $this->router = $router;
+        $this->requestStack = $requestStack;
     }
 
     public function serializeEvent(JsonSerializationVisitor $visitor, Media $media)
     {
         $provider = $this->getProviderByName($media->getProviderName());
+        $host = $this->requestStack->getCurrentRequest()->getSchemeAndHttpHost();
 
         return [
             'filename' => $media->getName(),
             'size' => sprintf("%.1f kB", $media->getSize() / 1000),
             'copyright' => $media->getCopyright(),
             'description' => $media->getDescription(),
-            'src' => $this->$provider->generatePublicUrl($media, 'reference'),
+            'src' => $host . $this->$provider->generatePublicUrl($media, 'reference'),
             'height' => $media->getHeight(),
             'width' => $media->getWidth(),
             'context' => $media->getContext(),

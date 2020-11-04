@@ -34,3 +34,9 @@ services:
     arguments: [ ~, App\Entity\Video, SonataAdminBundle:CRUD ]
     tags:
       - { name: sonata.admin, manager_type: orm, audit: false, group: Основной контент, label: Видео ролики }
+
+  app.admin.media:
+    class: App\Admin\MediaAdmin
+    arguments: [ ~, App\Entity\Media, SonataAdminBundle:CRUD ]
+    tags:
+      - { name: sonata.admin, manager_type: orm, audit: false, group: Основной контент, label: Медиа-файл }

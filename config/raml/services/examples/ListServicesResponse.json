@@ -1,0 +1,48 @@
+{
+  "services": [
+    {
+      "id": 1,
+      "sort": 0,
+      "title": "test",
+      "slug": "test",
+      "media": {
+        "id": 1,
+        "title": "test",
+        "type": "test",
+        "file": {
+          "filename": "eblet.mp4",
+          "size": "4333.3 kB",
+          "copyright": null,
+          "description": null,
+          "src": "http://localhost:8080/uploads/media/medias/0001/01/34ec16d59109961f341ec5f9722dae0714b3a045.mp4",
+          "height": null,
+          "width": null,
+          "context": "medias",
+          "id": 2
+        }
+      }
+    },
+    {
+      "id": 2,
+      "sort": 0,
+      "title": "test",
+      "slug": "test-1",
+      "media": {
+        "id": 2,
+        "title": "test",
+        "type": "test",
+        "file": {
+          "filename": "Selection_001.png",
+          "size": "0.7 kB",
+          "copyright": null,
+          "description": null,
+          "src": "http://localhost:8080/uploads/media/medias/0001/01/c6d8d6c4f90ea58d2c487fd6ae97e76812779ffb.png",
+          "height": 287,
+          "width": 327,
+          "context": "medias",
+          "id": 3
+        }
+      }
+    }
+  ]
+}

@@ -39,6 +39,12 @@ class Service implements SluggableInterface, TimestampableInterface, LocaleInter
      */
     private ?int $sort = 0;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Media::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $media;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -81,5 +87,17 @@ class Service implements SluggableInterface, TimestampableInterface, LocaleInter
     public function shouldRegenerateSlugOnUpdate(): bool
     {
         return false;
+    }
+
+    public function getMedia(): ?Media
+    {
+        return $this->media;
+    }
+
+    public function setMedia(?Media $media): self
+    {
+        $this->media = $media;
+
+        return $this;
     }
 }

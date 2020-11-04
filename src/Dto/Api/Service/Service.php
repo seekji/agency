@@ -32,7 +32,7 @@ class Service
     /**
      * @Type("App\Dto\Api\Media\Media")
      */
-    public Media $media;
+    public ?Media $media = null;
 
     public function __construct(?\App\Entity\Service $service = null)
     {

@@ -1,0 +1,15 @@
+{
+    "name": "seekji/seo-bundle",
+    "authors": [
+        {
+            "name": "Seo"
+        }
+    ],
+    "require": {},
+    "autoload": {
+      "psr-4": { "Seo\\SeoBundle\\": "" }
+    },
+    "extra": {
+        "branch-version": "1.0-dev"
+    }
+}

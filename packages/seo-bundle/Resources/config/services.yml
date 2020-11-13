@@ -1,0 +1,39 @@
+services:
+    seo.doctrine_rules_repository:
+        class: Doctrine\ORM\EntityRepository
+        factory: ["@doctrine.orm.entity_manager", "getRepository"]
+        arguments:
+            - Seo\SeoBundle\Entity\Rule
+
+    seo.redirect_rule_repository:
+        class: Doctrine\ORM\EntityRepository
+        factory: ["@doctrine.orm.entity_manager", "getRepository"]
+        arguments:
+            - Seo\SeoBundle\Entity\RedirectRule
+
+    seo.rules_provider_doctrine:
+        class: Seo\SeoBundle\Rule\DoctrineRulesProvider
+        arguments:
+            - "@seo.doctrine_rules_repository"
+
+    seo.compiler:
+        class: Seo\SeoBundle\Metadata\Compiler\Compiler
+        arguments:
+            - "@twig"
+
+    seo.metadata_factory:
+        class: Seo\SeoBundle\Metadata\MetadataFactory
+        public: true
+        autowire: true
+        arguments:
+            - "@seo.rules_provider_doctrine"
+            - "@seo.compiler"
+            - "@?seo.metadata_cache"
+
+    seo.twig_extension:
+        class: Seo\SeoBundle\Twig\Extension\SEOExtension
+        arguments:
+            - "@seo.metadata_factory"
+            - "@request_stack"
+        tags:
+            - { name: twig.extension }

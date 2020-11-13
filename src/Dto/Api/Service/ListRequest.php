@@ -14,7 +14,7 @@ class ListRequest
     /**
      * @Type("integer")
      */
-    public int $limit = 10;
+    public int $limit = 30;
 
     /**
      * @Type("integer")

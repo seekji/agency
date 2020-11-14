@@ -46,6 +46,33 @@ types:
         type: Picture | nil
         required: false
 
+  PostListRequest:
+    properties:
+      locale:
+        description: Локаль для переводов
+        enum: [en, ru]
+        example: ru
+        default: ru
+      limit:
+        description: Кол-во записей в списке
+        type: number
+        required: false
+        minimum: 1
+        maximum: 30
+      offset:
+        description: Отступ для записей
+        type: number
+        minimum: 0
+        required: false
+      services:
+        description: Идентификатор услуги
+        type: number[]
+        required: false
+      branches:
+        description: Идентификатор отрасли
+        type: number[]
+        required: false
+
   ListResponse:
     properties:
       limit:

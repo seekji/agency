@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Dto\Api\Cases\ListRequest;
 use App\Entity\Cases;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -17,6 +18,33 @@ class CasesRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Cases::class);
+    }
+
+    public function findByRequest(ListRequest $request): ?array
+    {
+        $query = $this->createQueryBuilder('q');
+
+        if (isset($request->services) && count($request->services)) {
+            $query
+                ->leftJoin('q.services', 'services')
+                ->andWhere('services IN (:services)')
+                ->setParameter('services', $request->services);
+        }
+
+        if (isset($request->branches) && count($request->branches)) {
+            $query
+                ->leftJoin('q.branch', 'branch')
+                ->andWhere('branch IN (:branches)')
+                ->setParameter('branches', $request->branches);
+        }
+
+        return $query
+            ->andWhere('q.locale = :locale')
+            ->setParameter('locale', $request->locale)
+            ->setFirstResult($request->offset)
+            ->setMaxResults($request->limit)
+            ->getQuery()
+            ->getResult();
     }
 
     // /**

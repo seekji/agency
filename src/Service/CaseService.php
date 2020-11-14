@@ -19,7 +19,7 @@ class CaseService
 
     public function findCases(ListRequest $request): ListResponse
     {
-        $response = new ListResponse($this->caseRepository->findBy(['locale' => $request->locale], null, $request->limit, $request->offset));
+        $response = new ListResponse($this->caseRepository->findByRequest($request));
 
         $response->limit = $request->limit;
         $response->offset = $request->offset;

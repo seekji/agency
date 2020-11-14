@@ -14,11 +14,21 @@ class ListRequest
     /**
      * @Type("integer")
      */
-    public int $limit = 10;
+    public int $limit = 30;
 
     /**
      * @Type("integer")
      */
     public int $offset = 0;
+
+    /**
+     * @Type("array")
+     */
+    public ?array $services;
+
+    /**
+     * @Type("array")
+     */
+    public ?array $branches;
 
 }

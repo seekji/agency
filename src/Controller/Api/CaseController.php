@@ -27,7 +27,7 @@ class CaseController extends AbstractController
     }
 
     /**
-     * @Route("", methods={"GET"})
+     * @Route("", methods={"GET", "POST"})
      */
     public function cases(ListRequest $request): Response
     {
@@ -35,5 +35,4 @@ class CaseController extends AbstractController
 
         return new JsonResponse($this->serializer->serialize($cases, 'json'), 200, [], true);
     }
-
 }

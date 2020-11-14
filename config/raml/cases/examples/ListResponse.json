@@ -1,0 +1,20 @@
+{
+  "cases": [
+    {
+      "id": 1,
+      "title": "test",
+      "slug": "test",
+      "excerpt": "test",
+      "previewPicture": null
+    },
+    {
+      "id": 2,
+      "title": "test 2",
+      "slug": "test-2",
+      "excerpt": "test",
+      "previewPicture": null
+    }
+  ],
+  "limit": 10,
+  "offset": 0
+}

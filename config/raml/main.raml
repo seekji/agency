@@ -7,16 +7,68 @@ urlPrefix: /api
 
 uses:
   types: types.raml
-  caseTypes: cases/types.raml
-  serviceTypes: services/types.raml
   partnerTypes: partners/types.raml
   settingsTypes: settings/types.raml
-  branchTypes: branches/types.raml
 
 traits: !include common.raml
 
-/cases: !include cases/cases.raml
-/services: !include services/services.raml
+/cases:
+  get:
+    is: [hasErrors, hasCommonErrors, localable, pageable]
+    description: "Список кейсов"
+    responses:
+      200:
+        body:
+          application/json:
+            type: types.CaseListResponse
+            example: !include cases/examples/ListResponse.json
+
+  post:
+    is: [hasHeaderMissing, hasCommonErrors, hasErrors]
+    description: "Список кейсов, фильтрация"
+    body:
+      application/json:
+        type: types.CaseFilterRequest
+        example: !include cases/examples/PostListRequestExample.json
+    responses:
+      200:
+        body:
+          application/json:
+            type: types.CaseListResponse
+            example: !include cases/examples/ListResponse.json
+
+  /{id}:
+    get:
+      is: [hasErrors, hasCommonErrors, localable]
+      description: "Детальный кейс"
+      responses:
+        200:
+          body:
+            application/json:
+              type: types.CaseResponse
+              example: !include cases/examples/ItemResponse.json
+
+/branches:
+  get:
+    is: [hasErrors, hasCommonErrors, localable, pageable]
+    description: "Список отраслей"
+    responses:
+      200:
+        body:
+          application/json:
+            type: types.BranchListResponse
+            example: !include branches/examples/BranchesListResponse.json
+
+/services:
+  get:
+    is: [hasErrors, hasCommonErrors, localable, pageable]
+    description: "Список услуг"
+    responses:
+      200:
+        body:
+          application/json:
+            type: types.ServicesListResponse
+            example: !include services/examples/ListServicesResponse.json
+
 /partners: !include partners/partners.raml
-/branches: !include branches/branches.raml
 /settings: !include settings/settings.raml

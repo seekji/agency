@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Controller\Api;
 
+use App\Dto\Api\Cases\FullCase;
 use App\Dto\Api\Cases\ListRequest;
+use App\Entity\Cases;
 use App\Service\CaseService;
 use JMS\Serializer\SerializerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -34,5 +36,15 @@ class CaseController extends AbstractController
         $cases = $this->caseService->findCases($request);
 
         return new JsonResponse($this->serializer->serialize($cases, 'json'), 200, [], true);
+    }
+
+    /**
+     * @Route("/{id}", methods={"GET"})
+     */
+    public function item(Cases $case): Response
+    {
+        $response = new FullCase($case);
+
+        return new JsonResponse($this->serializer->serialize($response, 'json'), 200, [], true);
     }
 }

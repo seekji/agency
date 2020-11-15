@@ -1,6 +1,80 @@
 #%RAML 1.0 Library
 
 types:
+
+  File:
+    properties:
+      id:
+        type: integer
+      src:
+        type: string
+      filename:
+        type: string
+      description:
+        type: string | nil
+        required: false
+      height:
+        type: integer | nil
+        required: false
+      width:
+        type: integer | nil
+        required: false
+      context:
+        type: string | nil
+        required: false
+      copyright:
+        type: string | nil
+        required: false
+      size:
+        type: string
+
+  Media:
+    properties:
+      id:
+        description: Идентификатор
+        type: integer
+      title:
+        description: Наименование услуги
+        type: string | nil
+        required: false
+      type:
+        description: Тип медиа файла
+        type: string
+      file:
+        description: Медиа-файл
+        type: File
+
+  Service:
+    properties:
+      id:
+        description: Идентификатор
+        type: integer
+      title:
+        description: Наименование услуги
+        type: string
+      slug:
+        description: Уникальный слаг (ЧПУ)
+        type: string
+      sort:
+        description: Индекс сортировки
+        type: integer
+      media:
+        description: Медиа-файл для курсора
+        type: Media | nil
+        required: false
+
+  Branch:
+    properties:
+      id:
+        description: Идентификатор
+        type: integer
+      title:
+        description: Наименование услуги
+        type: string
+      sort:
+        description: Индекс сортировки
+        type: integer
+
   Picture:
     properties:
       id:
@@ -26,6 +100,93 @@ types:
         required: false
       size:
         type: string
+
+  Case:
+    properties:
+      id:
+        description: Идентификатор
+        type: integer
+      title:
+        description: Наименование кейса
+        type: string
+      slug:
+        description: Уникальный слаг (ЧПУ)
+        type: string
+      excerpt:
+        description: Краткое описание
+        type: string
+        required: false
+      previewPicture:
+        type: Picture | nil
+        required: false
+      branch:
+        type: Branch
+        required: false
+      services:
+        type: Service[]
+        required: false
+
+  # Requests
+
+  CasesFilterRequest:
+    properties:
+      locale:
+        description: Локаль для переводов
+        enum: [en, ru]
+        example: ru
+        default: ru
+      limit:
+        description: Кол-во записей в списке
+        type: number
+        required: false
+        minimum: 1
+        maximum: 30
+      offset:
+        description: Отступ для записей
+        type: number
+        minimum: 0
+        required: false
+      services:
+        description: Идентификатор услуги
+        type: number[]
+        required: false
+      branches:
+        description: Идентификатор отрасли
+        type: number[]
+        required: false
+
+  # Responses
+
+  CaseResponse:
+    type: Case
+
+  CaseListResponse:
+    properties:
+      limit:
+        description: Кол-во записей в списке
+        type: number
+        required: false
+        minimum: 1
+        maximum: 30
+      offset:
+        description: Отступ для записей
+        type: number
+        minimum: 0
+        required: false
+      cases:
+        type: Case[]
+
+  BranchListResponse:
+    properties:
+      branches:
+        type: Branch[]
+
+  ServicesListResponse:
+    properties:
+      services:
+        type: Service[]
+
+  # Exceptions
 
   VndCustomErrorJson:
     properties:

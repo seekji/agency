@@ -1,20 +1,18 @@
 <?php
 
-declare(strict_types=1);
-
 namespace App\Entity;
 
 use App\Application\Sonata\MediaBundle\Entity\Media;
-use App\Repository\ClientRepository;
+use App\Repository\SpecialistRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Knp\DoctrineBehaviors\Contract\Entity\TimestampableInterface;
 use Knp\DoctrineBehaviors\Model\Timestampable\TimestampableTrait;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity(repositoryClass=ClientRepository::class)
+ * @ORM\Entity(repositoryClass=SpecialistRepository::class)
  */
-class Client implements TimestampableInterface
+class Specialist implements TimestampableInterface
 {
     use TimestampableTrait;
 
@@ -31,9 +29,14 @@ class Client implements TimestampableInterface
     private $name;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $position;
+
+    /**
      * @ORM\Column(type="text", nullable=true)
      */
-    private $about;
+    private $quote;
 
     /**
      * @ORM\ManyToOne(
@@ -62,14 +65,26 @@ class Client implements TimestampableInterface
         return $this;
     }
 
-    public function getAbout(): ?string
+    public function getPosition(): ?string
     {
-        return $this->about;
+        return $this->position;
     }
 
-    public function setAbout(?string $about): self
+    public function setPosition(string $position): self
     {
-        $this->about = $about;
+        $this->position = $position;
+
+        return $this;
+    }
+
+    public function getQuote(): ?string
+    {
+        return $this->quote;
+    }
+
+    public function setQuote(?string $quote): self
+    {
+        $this->quote = $quote;
 
         return $this;
     }

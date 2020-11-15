@@ -22,6 +22,15 @@ sonata_media:
       providers:
         - sonata.media.provider.image
 
+    specialists:
+      providers:
+        - sonata.media.provider.image
+
+    clients:
+      providers:
+        - sonata.media.provider.image
+        - sonata.media.provider.file.svg
+
     videos:
       providers:
         - sonata.media.provider.image

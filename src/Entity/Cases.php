@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
-use App\Application\Sonata\MediaBundle\Entity\Media;
+use App\Application\Sonata\MediaBundle\Entity\Media as SonataMedia;
 use App\Entity\Locale\LocaleInterface;
 use App\Entity\Locale\LocaleTrait;
 use App\Repository\CasesRepository;
@@ -16,6 +16,7 @@ use Knp\DoctrineBehaviors\Contract\Entity\TimestampableInterface;
 use Knp\DoctrineBehaviors\Model\Sluggable\SluggableTrait;
 use Knp\DoctrineBehaviors\Model\Timestampable\TimestampableTrait;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=CasesRepository::class)
@@ -24,6 +25,14 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 class Cases implements SluggableInterface, TimestampableInterface, LocaleInterface
 {
     use SluggableTrait, TimestampableTrait, LocaleTrait;
+
+    public const RESULT_ACHIEVEMENT = 0;
+    public const RESULT_OFFER = 1;
+
+    public const RESULTS_LIST = [
+        self::RESULT_OFFER => 'Предложение',
+        self::RESULT_ACHIEVEMENT => 'Достижения',
+    ];
 
     /**
      * @ORM\Id
@@ -59,12 +68,95 @@ class Cases implements SluggableInterface, TimestampableInterface, LocaleInterfa
      *     cascade={"persist"},
      * )
      * @ORM\JoinColumn(onDelete="SET NULL")
+     * @Assert\NotBlank()
      */
-    private ?Media $previewPicture;
+    private ?SonataMedia $previewPicture;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isActive = true;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isItemBig = false;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isShowOnHomepage = true;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $sort = 0;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $taskTitle;
+
+    /**
+     * @ORM\Column(type="json", nullable=true)
+     * @Assert\Count(
+     *     max=4,
+     *     maxMessage="achievements.count.max"
+     * )
+     */
+    private $achievements = [];
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $slideTitle;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $offer;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Media::class, cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $detailMedia;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $tools;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Specialist::class, cascade={"persist"})
+     */
+    private $specialist;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Client::class, cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $client;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Cases::class)
+     */
+    private $similarCase;
+
+    /**
+     * @ORM\OneToMany(targetEntity=CaseBlock::class, mappedBy="cases", orphanRemoval=true, cascade={"persist"})
+     */
+    private $blocks;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $resultType;
 
     public function __construct()
     {
         $this->services = new ArrayCollection();
+        $this->blocks = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -137,12 +229,12 @@ class Cases implements SluggableInterface, TimestampableInterface, LocaleInterfa
         return $this;
     }
 
-    public function getPreviewPicture(): ?Media
+    public function getPreviewPicture(): ?SonataMedia
     {
         return $this->previewPicture;
     }
 
-    public function setPreviewPicture(?Media $media): self
+    public function setPreviewPicture(?SonataMedia $media): self
     {
         $this->previewPicture = $media;
 
@@ -157,5 +249,203 @@ class Cases implements SluggableInterface, TimestampableInterface, LocaleInterfa
     public function shouldRegenerateSlugOnUpdate(): bool
     {
         return false;
+    }
+
+    public function getIsActive(): ?bool
+    {
+        return $this->isActive;
+    }
+
+    public function setIsActive(bool $isActive): self
+    {
+        $this->isActive = $isActive;
+
+        return $this;
+    }
+
+    public function getIsItemBig(): ?bool
+    {
+        return $this->isItemBig;
+    }
+
+    public function setIsItemBig(bool $isItemBig): self
+    {
+        $this->isItemBig = $isItemBig;
+
+        return $this;
+    }
+
+    public function getIsShowOnHomepage(): ?bool
+    {
+        return $this->isShowOnHomepage;
+    }
+
+    public function setIsShowOnHomepage(bool $isShowOnHomepage): self
+    {
+        $this->isShowOnHomepage = $isShowOnHomepage;
+
+        return $this;
+    }
+
+    public function getSort(): ?int
+    {
+        return $this->sort;
+    }
+
+    public function setSort(int $sort): self
+    {
+        $this->sort = $sort;
+
+        return $this;
+    }
+
+    public function getTaskTitle(): ?string
+    {
+        return $this->taskTitle;
+    }
+
+    public function setTaskTitle(string $taskTitle): self
+    {
+        $this->taskTitle = $taskTitle;
+
+        return $this;
+    }
+
+    public function getAchievements(): ?array
+    {
+        return $this->achievements;
+    }
+
+    public function setAchievements(?array $achievements): self
+    {
+        $this->achievements = $achievements;
+
+        return $this;
+    }
+
+    public function getSlideTitle(): ?string
+    {
+        return $this->slideTitle;
+    }
+
+    public function setSlideTitle(?string $slideTitle): self
+    {
+        $this->slideTitle = $slideTitle;
+
+        return $this;
+    }
+
+    public function getOffer(): ?string
+    {
+        return $this->offer;
+    }
+
+    public function setOffer(?string $offer): self
+    {
+        $this->offer = $offer;
+
+        return $this;
+    }
+
+    public function getDetailMedia(): ?Media
+    {
+        return $this->detailMedia;
+    }
+
+    public function setDetailMedia(?Media $detailMedia): self
+    {
+        $this->detailMedia = $detailMedia;
+
+        return $this;
+    }
+
+    public function getTools(): ?string
+    {
+        return $this->tools;
+    }
+
+    public function setTools(?string $tools): self
+    {
+        $this->tools = $tools;
+
+        return $this;
+    }
+
+    public function getSpecialist(): ?Specialist
+    {
+        return $this->specialist;
+    }
+
+    public function setSpecialist(?Specialist $specialist): self
+    {
+        $this->specialist = $specialist;
+
+        return $this;
+    }
+
+    public function getClient(): ?Client
+    {
+        return $this->client;
+    }
+
+    public function setClient(?Client $client): self
+    {
+        $this->client = $client;
+
+        return $this;
+    }
+
+    public function getSimilarCase(): ?self
+    {
+        return $this->similarCase;
+    }
+
+    public function setSimilarCase(?self $similarCase): self
+    {
+        $this->similarCase = $similarCase;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|CaseBlock[]
+     */
+    public function getBlocks(): Collection
+    {
+        return $this->blocks;
+    }
+
+    public function addBlock(CaseBlock $block): self
+    {
+        if (!$this->blocks->contains($block)) {
+            $this->blocks[] = $block;
+            $block->setCases($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBlock(CaseBlock $block): self
+    {
+        if ($this->blocks->removeElement($block)) {
+            // set the owning side to null (unless already changed)
+            if ($block->getCases() === $this) {
+                $block->setCases(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getResultType(): ?int
+    {
+        return $this->resultType;
+    }
+
+    public function setResultType(?int $resultType): self
+    {
+        $this->resultType = $resultType;
+
+        return $this;
     }
 }

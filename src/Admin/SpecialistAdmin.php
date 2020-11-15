@@ -10,7 +10,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Form\Type\ModelListType;
 use Sonata\AdminBundle\Route\RouteCollection;
 
-class ClientAdmin extends AbstractAdmin
+class SpecialistAdmin extends AbstractAdmin
 {
     protected function configureRoutes(RouteCollection $collection)
     {
@@ -34,6 +34,7 @@ class ClientAdmin extends AbstractAdmin
         $list
             ->add('id')
             ->add('name')
+            ->add('position')
             ->add('_action', null, [
                 'actions' => [
                     'edit' => [],
@@ -44,11 +45,11 @@ class ClientAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $form)
     {
         $form
-            ->tab('Клиент')
+            ->tab('Специалист')
                 ->with('Свойства', ['class' => 'col-md-12'])
                     ->add('name')
-                    ->add('about')
-                    ->add('picture', ModelListType::class, ['required' => true], ['link_parameters' => ['context' => 'clients']])
+                    ->add('position')
+                    ->add('picture', ModelListType::class, ['required' => true], ['link_parameters' => ['context' => 'specialists']])
                 ->end()
             ->end()
         ;

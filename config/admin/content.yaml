@@ -5,6 +5,12 @@ services:
     tags:
       - { name: sonata.admin, manager_type: orm, audit: false, group: Кейсы, label: Список кейсов }
 
+  app.admin.case_block:
+    class: App\Admin\CaseBlockAdmin
+    arguments: [ ~, App\Entity\CaseBlock, SonataAdminBundle:CRUD ]
+    tags:
+      - { name: sonata.admin, manager_type: orm, audit: false, group: Кейсы, label: Блоки кейса, show_in_dashboard: false }
+
   app.admin.branch:
     class: App\Admin\BranchAdmin
     arguments: [~, App\Entity\Branch, SonataAdminBundle:CRUD]
@@ -40,3 +46,15 @@ services:
     arguments: [ ~, App\Entity\Media, SonataAdminBundle:CRUD ]
     tags:
       - { name: sonata.admin, manager_type: orm, audit: false, group: Основной контент, label: Медиа-файл }
+
+  app.admin.specialist:
+    class: App\Admin\SpecialistAdmin
+    arguments: [ ~, App\Entity\Specialist, SonataAdminBundle:CRUD ]
+    tags:
+      - { name: sonata.admin, manager_type: orm, audit: false, group: Кейсы, label: Специалисты, show_in_dashboard: false }
+
+  app.admin.client:
+    class: App\Admin\ClientAdmin
+    arguments: [ ~, App\Entity\Client, SonataAdminBundle:CRUD ]
+    tags:
+      - { name: sonata.admin, manager_type: orm, audit: false, group: Кейсы, label: Клиенты, show_in_dashboard: false }

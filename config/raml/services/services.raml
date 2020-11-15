@@ -1,9 +1,0 @@
-get:
-  is: [hasErrors, hasCommonErrors, localable, pageable]
-  description: "Список услуг"
-  responses:
-    200:
-      body:
-        application/json:
-          type: serviceTypes.ListResponse
-          example: !include examples/ListServicesResponse.json

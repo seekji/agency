@@ -4,9 +4,13 @@ declare(strict_types=1);
 
 namespace App\Service;
 
+use App\Dto\Api\Cases\FullCase;
+use App\Dto\Api\Cases\ItemRequest;
 use App\Dto\Api\Cases\ListRequest;
 use App\Dto\Api\Cases\ListResponse;
+use App\Entity\Cases;
 use App\Repository\CasesRepository;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class CaseService
 {
@@ -27,4 +31,14 @@ class CaseService
         return $response;
     }
 
+    public function case(ItemRequest $request, string $slug): FullCase
+    {
+        $case = $this->caseRepository->findOneBy(['isActive' => true, 'locale' => $request->locale, 'slug' => $slug]);
+
+        if (!$case instanceof Cases) {
+            throw new NotFoundHttpException('Case not found');
+        }
+
+        return new FullCase($case);
+    }
 }

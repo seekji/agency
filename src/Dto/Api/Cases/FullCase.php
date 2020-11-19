@@ -112,7 +112,6 @@ class FullCase
         $this->slideTitle = $case->getSlideTitle();
         $this->taskTitle = $case->getTaskTitle();
         $this->branch = new Branch($case->getBranch());
-        $this->similarCase = new OneCase($case->getSimilarCase());
         $this->client = new Client($case->getClient());
         $this->specialist = new Specialist($case->getSpecialist());
 
@@ -120,6 +119,10 @@ class FullCase
             foreach ($case->getBlocks() as $block) {
                 $this->blocks[] = new CaseBlock($block);
             }
+        }
+
+        if ($case->getSimilarCase() instanceof Cases) {
+            $this->similarCase = new OneCase($case->getSimilarCase());
         }
 
         if ($case->getDetailMedia() instanceof \App\Entity\Media) {

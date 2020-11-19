@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace App\Controller\Api;
 
-use App\Dto\Api\Cases\FullCase;
+use App\Dto\Api\Cases\ItemRequest;
 use App\Dto\Api\Cases\ListRequest;
-use App\Entity\Cases;
 use App\Service\CaseService;
 use JMS\Serializer\SerializerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -39,11 +38,11 @@ class CaseController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", methods={"GET"})
+     * @Route("/{slug}", methods={"GET"})
      */
-    public function item(Cases $case): Response
+    public function item(ItemRequest $request, string $slug): Response
     {
-        $response = new FullCase($case);
+        $response = $this->caseService->case($request, $slug);
 
         return new JsonResponse($this->serializer->serialize($response, 'json'), 200, [], true);
     }

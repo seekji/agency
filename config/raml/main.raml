@@ -37,7 +37,7 @@ traits: !include common.raml
             type: types.CaseListResponse
             example: !include cases/examples/ListResponse.json
 
-  /{id}:
+  /{slug}:
     get:
       is: [hasErrors, hasCommonErrors, localable]
       description: "Детальный кейс"

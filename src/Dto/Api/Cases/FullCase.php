@@ -111,9 +111,16 @@ class FullCase
         $this->tools = $case->getTools();
         $this->slideTitle = $case->getSlideTitle();
         $this->taskTitle = $case->getTaskTitle();
-        $this->branch = new Branch($case->getBranch());
-        $this->client = new Client($case->getClient());
+
         $this->specialist = new Specialist($case->getSpecialist());
+
+        if ($case->getClient()) {
+            $this->client = new Client($case->getClient());
+        }
+
+        if ($case->getBranch()) {
+            $this->branch = new Branch($case->getBranch());
+        }
 
         if ($case->getBlocks()) {
             foreach ($case->getBlocks() as $block) {

@@ -19,6 +19,21 @@ types:
         description: Ссылка
         type: string
 
+  MenuLink:
+    properties:
+      title:
+        description: Заголовок ссылки
+        type: string
+      link:
+        description: Ссылка
+        type: string
+      external:
+        description: Внешняя ссылка?
+        type: boolean
+      sort:
+        description: Значение сортировки
+        type: integer
+
   Video:
     properties:
       title:
@@ -100,3 +115,6 @@ types:
       video:
         description: Видео для слайда
         type: Video
+      menuLinks:
+        description: Ссылки для меню
+        type: MenuLink[] | nil

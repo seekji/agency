@@ -6,6 +6,7 @@ namespace App\Admin;
 
 use App\Entity\Locale\LocaleInterface;
 use App\Form\Admin\AchievementType;
+use App\Form\Admin\MenuLink;
 use App\Form\Admin\SocialLink;
 use App\Form\Admin\TranslationForm;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
@@ -110,7 +111,17 @@ class SettingsAdmin extends AbstractAdmin
                     ])
                 ->end()
             ->end()
-
+            ->tab('Навигация')
+                ->with('Ссылки для меню', ['class' => 'col-md-12'])
+                    ->add('menuLinks', \Symfony\Component\Form\Extension\Core\Type\CollectionType::class, [
+                        'by_reference' => false,
+                        'allow_add' => true,
+                        'allow_delete' => true,
+                        'prototype' => true,
+                        'entry_type' => MenuLink::class,
+                    ])
+                ->end()
+            ->end()
         ;
     }
 

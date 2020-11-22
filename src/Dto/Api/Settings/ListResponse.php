@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Dto\Api\Settings;
 
 use App\Dto\Api\Settings\Achievement\Achievement;
+use App\Dto\Api\Settings\Menu\Menu;
 use App\Dto\Api\Settings\SocialLink\SocialLink;
 use App\Dto\Api\Settings\Translation\Translation;
 use App\Dto\Api\Video\Video;
@@ -23,6 +24,12 @@ class ListResponse
      * @Type("array<App\Dto\Api\Settings\SocialLink\SocialLink>")
      */
     public $socialLinks;
+
+    /**
+     * @var Menu[]
+     * @Type("array<App\Dto\Api\Settings\Menu\Menu>")
+     */
+    public $menuLinks;
 
     /**
      * @var Achievement[]
@@ -74,6 +81,16 @@ class ListResponse
             foreach ($settings->getAchievements() as $achievement) {
                 $this->achievements[] = new Achievement($achievement);
             }
+        }
+
+        if ($settings->getMenuLinks()) {
+            foreach ($settings->getMenuLinks() as $menuItem) {
+                $this->menuLinks[] = new Menu($menuItem);
+            }
+
+            usort($this->menuLinks, function($a, $b) {
+                return $a->sort <=> $b->sort;
+            });
         }
     }
 }

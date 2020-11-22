@@ -112,7 +112,9 @@ class FullCase
         $this->slideTitle = $case->getSlideTitle();
         $this->taskTitle = $case->getTaskTitle();
 
-        $this->specialist = new Specialist($case->getSpecialist());
+        if ($case->getSpecialist()) {
+            $this->specialist = new Specialist($case->getSpecialist());
+        }
 
         if ($case->getClient()) {
             $this->client = new Client($case->getClient());

@@ -61,6 +61,11 @@ class Settings implements TimestampableInterface, LocaleInterface
      */
     private ?array $socialLinks = [];
 
+    /**
+     * @ORM\Column(type="json", nullable=true)
+     */
+    private ?array $menuLinks = [];
+
     public function getId(): ?int
     {
         return $this->id;
@@ -151,6 +156,18 @@ class Settings implements TimestampableInterface, LocaleInterface
     public function setSocialLinks(?array $socialLinks): self
     {
         $this->socialLinks = $socialLinks;
+
+        return $this;
+    }
+
+    public function getMenuLinks(): ?array
+    {
+        return $this->menuLinks;
+    }
+
+    public function setMenuLinks(?array $menuLinks): self
+    {
+        $this->menuLinks = $menuLinks;
 
         return $this;
     }

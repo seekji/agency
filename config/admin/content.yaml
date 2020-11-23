@@ -23,6 +23,12 @@ services:
     tags:
       - { name: sonata.admin, manager_type: orm, audit: false, group: Кейсы, label: Список услуг }
 
+  app.admin.client:
+    class: App\Admin\ClientAdmin
+    arguments: [ ~, App\Entity\Client, SonataAdminBundle:CRUD ]
+    tags:
+      - { name: sonata.admin, manager_type: orm, audit: false, group: Кейсы, label: Клиенты, show_in_dashboard: false }
+
   app.admin.partner:
     class: App\Admin\PartnerAdmin
     arguments: [ ~, App\Entity\Partner, SonataAdminBundle:CRUD ]
@@ -41,20 +47,26 @@ services:
     tags:
       - { name: sonata.admin, manager_type: orm, audit: false, group: Основной контент, label: Видео ролики }
 
+  app.admin.specialist:
+    class: App\Admin\SpecialistAdmin
+    arguments: [ ~, App\Entity\Specialist, SonataAdminBundle:CRUD ]
+    tags:
+      - { name: sonata.admin, manager_type: orm, audit: false, group: Основной контент, label: Специалисты }
+
   app.admin.media:
     class: App\Admin\MediaAdmin
     arguments: [ ~, App\Entity\Media, SonataAdminBundle:CRUD ]
     tags:
       - { name: sonata.admin, manager_type: orm, audit: false, group: Основной контент, label: Медиа-файл }
 
-  app.admin.specialist:
-    class: App\Admin\SpecialistAdmin
-    arguments: [ ~, App\Entity\Specialist, SonataAdminBundle:CRUD ]
+  app.admin.page:
+    class: App\Admin\PageAdmin
+    arguments: [ ~, App\Entity\Page, SonataAdminBundle:CRUD ]
     tags:
-      - { name: sonata.admin, manager_type: orm, audit: false, group: Кейсы, label: Специалисты, show_in_dashboard: false }
+      - { name: sonata.admin, manager_type: orm, audit: false, group: Статичные страницы, label: Страницы }
 
-  app.admin.client:
-    class: App\Admin\ClientAdmin
-    arguments: [ ~, App\Entity\Client, SonataAdminBundle:CRUD ]
+  app.admin.page_treatment:
+    class: App\Admin\PageTreatmentAdmin
+    arguments: [ ~, App\Entity\PageTreatments, SonataAdminBundle:CRUD ]
     tags:
-      - { name: sonata.admin, manager_type: orm, audit: false, group: Кейсы, label: Клиенты, show_in_dashboard: false }
+      - { name: sonata.admin, manager_type: orm, audit: false, group: Статичные страницы, label: Достижения, show_in_dashboard: false }

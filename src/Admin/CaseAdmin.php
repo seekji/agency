@@ -71,7 +71,7 @@ class CaseAdmin extends AbstractAdmin
         $form
                 ->add('excerpt')
                 ->add('similarCase')
-                ->add('services')
+                ->add('services', ModelType::class, ['multiple' => true, 'by_reference' => false])
                 ->add('branch', ModelType::class, [])
                 ->add('previewPicture', ModelListType::class, ['required' => true], ['link_parameters' => ['context' => 'cases']])
             ->end()

@@ -10,6 +10,7 @@ use App\Dto\Api\Page\PageRequest;
 use App\Dto\Api\Page\PageResponse;
 use App\Entity\Page;
 use App\Repository\PageRepository;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class PageService
@@ -36,7 +37,7 @@ class PageService
         $page = $this->pageRepository->findOneBy(['isPublished' => true, 'locale' => $request->locale, 'slug' => $slug]);
 
         if (!$page instanceof Page) {
-            throw new NotFoundHttpException('Page not found');
+            throw new NotFoundHttpException('Page not found', null, Response::HTTP_NOT_FOUND);
         }
 
         return new PageResponse($page);

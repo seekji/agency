@@ -66,7 +66,17 @@ traits: !include common.raml
         body:
           application/json:
             type: types.ServicesListResponse
-            example: !include services/examples/ListServicesResponse.json
+            example: !include examples/ListServicesResponse.json
+  /{slug}:
+    get:
+      is: [hasErrors, hasCommonErrors, localable]
+      description: "Детальная страница услуги"
+      responses:
+        200:
+          body:
+            application/json:
+              type: types.ServiceResponse
+              example: !include examples/ServiceResponse.json
 
 /pages:
   get:

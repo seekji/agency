@@ -184,6 +184,10 @@ types:
       sort:
         description: Индекс сортировки
         type: integer
+      description:
+        description: Текст
+        type: string | nil
+        required: false
       media:
         description: Медиа-файл для курсора
         type: Media | nil
@@ -362,6 +366,9 @@ types:
     properties:
       branches:
         type: Branch[]
+
+  ServiceResponse:
+    type: Service
 
   ServicesListResponse:
     properties:

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller\Api;
 
+use App\Dto\Api\Service\ServiceRequest;
 use App\Dto\Api\Service\ListRequest;
 use App\Service\ServService;
 use JMS\Serializer\SerializerInterface;
@@ -31,6 +32,16 @@ class ServiceController extends AbstractController
     public function services(ListRequest $request): JsonResponse
     {
         $data = $this->servService->findServices($request);
+
+        return new JsonResponse($this->serializer->serialize($data, 'json'), 200, [], true);
+    }
+
+    /**
+     * @Route("/{slug}", methods={"GET"})
+     */
+    public function service(ServiceRequest $request, string $slug): JsonResponse
+    {
+        $data = $this->servService->service($request, $slug);
 
         return new JsonResponse($this->serializer->serialize($data, 'json'), 200, [], true);
     }

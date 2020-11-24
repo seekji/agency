@@ -30,6 +30,11 @@ class Service
     public ?string $slug;
 
     /**
+     * @Type("string")
+     */
+    public ?string $description = null;
+
+    /**
      * @Type("App\Dto\Api\Media\Media")
      */
     public ?Media $media = null;
@@ -40,6 +45,7 @@ class Service
         $this->title = $service->getTitle();
         $this->sort = $service->getSort();
         $this->slug = $service->getSlug();
+        $this->description = $service->getDescription();
 
         if ($service->getMedia() instanceof \App\Entity\Media) {
             $this->media = new Media($service->getMedia());

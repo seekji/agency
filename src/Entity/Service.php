@@ -45,6 +45,11 @@ class Service implements SluggableInterface, TimestampableInterface, LocaleInter
      */
     private $media;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $description;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -97,6 +102,18 @@ class Service implements SluggableInterface, TimestampableInterface, LocaleInter
     public function setMedia(?Media $media): self
     {
         $this->media = $media;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): self
+    {
+        $this->description = $description;
 
         return $this;
     }

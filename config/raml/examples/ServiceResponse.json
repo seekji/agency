@@ -1,0 +1,23 @@
+{
+  "id": 1,
+  "sort": 0,
+  "title": "test",
+  "slug": "test",
+  "description": "<p>asdfasdf dsfasdf</p>\r\n\r\n<p>asdf</p>\r\n\r\n<p>as</p>\r\n\r\n<p>df</p>\r\n\r\n<p>a</p>\r\n\r\n<p>sdf</p>",
+  "media": {
+    "id": 1,
+    "title": "test",
+    "type": "Video",
+    "file": {
+      "filename": "Selection_059.png",
+      "size": "2.1 kB",
+      "copyright": null,
+      "description": null,
+      "src": "http://localhost:8080/uploads/media/medias/0001/01/1a5d8f20487880a6bc3acf9434aac325900b17cd.png",
+      "height": 28,
+      "width": 169,
+      "context": "medias",
+      "id": 2
+    }
+  }
+}

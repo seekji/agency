@@ -69,6 +69,7 @@ class SettingsAdmin extends AbstractAdmin
                         'disabled' => true
                     ])
                     ->add('phone')
+                    ->add('address')
                     ->add('email', EmailType::class)
                     ->add('video', ModelType::class)
                 ->end()

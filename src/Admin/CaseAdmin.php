@@ -6,7 +6,7 @@ namespace App\Admin;
 
 use App\Entity\Cases;
 use App\Entity\Locale\LocaleInterface;
-use App\Form\Admin\AchievementType;
+use App\Form\Admin\CaseAchievementType;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
@@ -89,12 +89,12 @@ class CaseAdmin extends AbstractAdmin
         ->tab('Детальный слайд')
             ->with('Слайд')
                 ->add('slideTitle')
-                ->add('detailMedia', AdminType::class)
+                ->add('detailMedia', ModelListType::class, ['required' => true])
             ->end()
         ->end()
         ->tab('Клиент')
             ->with('Клиент')
-                ->add('client', AdminType::class)
+                ->add('client', ModelListType::class)
             ->end()
         ->end()
         ->tab('Итоги')
@@ -113,7 +113,7 @@ class CaseAdmin extends AbstractAdmin
                     'allow_add' => true,
                     'allow_delete' => true,
                     'prototype' => true,
-                    'entry_type' => AchievementType::class,
+                    'entry_type' => CaseAchievementType::class,
                 ])
             ->end()
         ->end()
@@ -134,7 +134,7 @@ class CaseAdmin extends AbstractAdmin
         ->end()
         ->tab('Специалист')
             ->with('Специалист')
-                ->add('specialist', AdminType::class)
+                ->add('specialist', ModelListType::class, ['required' => false])
             ->end()
         ->end()
         ->tab('Остальное')

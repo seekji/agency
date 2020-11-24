@@ -119,6 +119,7 @@ class Cases implements SluggableInterface, TimestampableInterface, LocaleInterfa
     /**
      * @ORM\ManyToOne(targetEntity=Media::class, cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotBlank()
      */
     private $detailMedia;
 
@@ -129,12 +130,14 @@ class Cases implements SluggableInterface, TimestampableInterface, LocaleInterfa
 
     /**
      * @ORM\ManyToOne(targetEntity=Specialist::class, cascade={"persist"})
+     * @ORM\JoinColumn(nullable=true)
      */
     private $specialist;
 
     /**
      * @ORM\ManyToOne(targetEntity=Client::class, cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotBlank()
      */
     private $client;
 
@@ -145,6 +148,9 @@ class Cases implements SluggableInterface, TimestampableInterface, LocaleInterfa
 
     /**
      * @ORM\OneToMany(targetEntity=CaseBlock::class, mappedBy="cases", orphanRemoval=true, cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotBlank()
+     * @Assert\Count(min=1, minMessage="case.blocks.count.min")
      */
     private $blocks;
 

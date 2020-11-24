@@ -49,6 +49,7 @@ class SpecialistAdmin extends AbstractAdmin
                 ->with('Свойства', ['class' => 'col-md-12'])
                     ->add('name')
                     ->add('position')
+                    ->add('quote')
                     ->add('picture', ModelListType::class, ['required' => true], ['link_parameters' => ['context' => 'specialists']])
                 ->end()
             ->end()

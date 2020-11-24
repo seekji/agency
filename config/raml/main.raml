@@ -7,8 +7,6 @@ urlPrefix: /api
 
 uses:
   types: types.raml
-  partnerTypes: partners/types.raml
-  settingsTypes: settings/types.raml
 
 traits: !include common.raml
 
@@ -70,5 +68,56 @@ traits: !include common.raml
             type: types.ServicesListResponse
             example: !include services/examples/ListServicesResponse.json
 
-/partners: !include partners/partners.raml
-/settings: !include settings/settings.raml
+/pages:
+  get:
+    is: [hasErrors, hasCommonErrors, localable, pageable]
+    description: "Список статичных страниц"
+    responses:
+      200:
+        body:
+          application/json:
+            type: types.PagesListResponse
+            example: !include examples/PagesListResponse.json
+
+  /{slug}:
+    get:
+      is: [hasErrors, hasCommonErrors, localable]
+      description: "Статичная страница"
+      responses:
+        200:
+          body:
+            application/json:
+              type: types.PageResponse
+              example: !include examples/PageResponse.json
+
+/settings:
+  get:
+    is: [hasErrors, hasCommonErrors, localable]
+    description: "Список настроек"
+    responses:
+      200:
+        body:
+          application/json:
+            type: types.AllSettingsResponse
+            example: !include examples/AllSettingsResponse.json
+
+  /translations:
+    get:
+      is: [hasErrors, hasCommonErrors, localable]
+      description: "Список переводов по локали"
+      responses:
+        200:
+          body:
+            application/json:
+              type: types.TranslationListResponse
+              example: !include examples/TranslationsListResponse.json
+
+/partners:
+  get:
+    is: [hasErrors, hasCommonErrors, localable, pageable]
+    description: "Список активных партнеров"
+    responses:
+      200:
+        body:
+          application/json:
+            type: types.PartnersListResponse

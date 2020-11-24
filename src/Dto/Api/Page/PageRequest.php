@@ -2,17 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Dto\Api\Cases;
+namespace App\Dto\Api\Page;
 
 use App\Dto\Api\LocaleTrait;
 use JMS\Serializer\Annotation\Type;
 
-class ItemRequest
+class PageRequest
 {
     use LocaleTrait;
-
-    /**
-     * @Type("string")
-     */
-    public string $slug;
 }

@@ -2,6 +2,132 @@
 
 types:
 
+  Partner:
+    properties:
+      id:
+        description: Идентификатор
+        type: integer
+      name:
+        description: Имя партнера
+        type: string | nil
+      sort:
+        description: Индекс сортировки
+        type: integer
+
+  Picture:
+    properties:
+      id:
+        type: integer
+      src:
+        type: string
+      filename:
+        type: string
+      description:
+        type: string | nil
+        required: false
+      height:
+        type: integer | nil
+        required: false
+      width:
+        type: integer | nil
+        required: false
+      context:
+        type: string | nil
+        required: false
+      copyright:
+        type: string | nil
+        required: false
+      size:
+        type: string
+
+  Specialist:
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      position:
+        type: string | nil
+        required: false
+      quote:
+        type: string | nil
+        required: false
+      picture:
+        type: Picture | nil
+        required: false
+
+  Translation:
+    properties:
+      key:
+        description: Ключ
+        type: string
+      translation:
+        description: Перевод ключа
+        type: string
+
+  SocialLink:
+    properties:
+      name:
+        description: Наименование соц. сети
+        type: string
+      link:
+        description: Ссылка
+        type: string
+
+  MenuLink:
+    properties:
+      title:
+        description: Заголовок ссылки
+        type: string
+      link:
+        description: Ссылка
+        type: string
+      external:
+        description: Внешняя ссылка?
+        type: boolean
+      sort:
+        description: Значение сортировки
+        type: integer
+
+  Video:
+    properties:
+      title:
+        type: string
+      href:
+        type: string
+      picture:
+        type: Picture
+
+  Achievement:
+    properties:
+      count:
+        description: Число
+        type: integer
+      countType:
+        description: Тип числа
+        type: string | nil
+      title:
+        description: Заголовок
+        type: string
+      description:
+        description: Описание достижения
+        type: string
+
+  PageAchievement:
+    properties:
+      place:
+        description: Место
+        type: integer
+      year:
+        description: Год
+        type: integer | nil
+      title:
+        description: Заголовок
+        type: string
+      text:
+        description: Описание достижения
+        type: string
+
   File:
     properties:
       id:
@@ -74,33 +200,6 @@ types:
       sort:
         description: Индекс сортировки
         type: integer
-
-  Picture:
-    properties:
-      id:
-        type: integer
-      src:
-        type: string
-      filename:
-        type: string
-      description:
-        type: string | nil
-        required: false
-      height:
-        type: integer | nil
-        required: false
-      width:
-        type: integer | nil
-        required: false
-      context:
-        type: string | nil
-        required: false
-      copyright:
-        type: string | nil
-        required: false
-      size:
-        type: string
-
   Case:
     properties:
       id:
@@ -125,6 +224,71 @@ types:
       services:
         type: Service[] | nil
         required: false
+
+  Page:
+    properties:
+      id:
+        description: Идентификатор
+        type: integer
+      title:
+        description: Заголовок страницы
+        type: string
+      slug:
+        description: Уникальный слаг (ЧПУ)
+        type: string
+      type:
+        description: Тип страницы
+        type: string
+      coordinates:
+        description: Координаты для карты
+        type: string | nil
+        required: false
+      excerpt:
+        description: Описание для страницы о нас
+        type: string | nil
+        required: false
+      description:
+        description: Содержимое текстовой страницы
+        type: string | nil
+        required: false
+      achievements:
+        description: Список достижений
+        type: PageAchievement[] | nil
+        required: false
+      specialists:
+        description: Команда
+        type: Specialist[] | nil
+        required: false
+      history:
+        description: История
+        type: History[] | nil
+        required: false
+      treatments:
+        description: Подходы
+        type: Treatment[] | nil
+        required: false
+
+  History:
+    properties:
+      year:
+        type: integer
+        required: false
+      text:
+        type: string
+        required: false
+
+  Treatment:
+    properties:
+      id:
+        type: integer
+      sort:
+        type: integer
+      title:
+        type: string
+      text:
+        type: string
+      picture:
+        type: Picture
 
   # Requests
 
@@ -156,6 +320,24 @@ types:
         required: false
 
   # Responses
+  PageResponse:
+    type: Page
+
+  PagesListResponse:
+    properties:
+      limit:
+        description: Кол-во записей в списке
+        type: number
+        required: false
+        minimum: 1
+        maximum: 30
+      offset:
+        description: Отступ для записей
+        type: number
+        minimum: 0
+        required: false
+      pages:
+        type: Page[]
 
   CaseResponse:
     type: Case
@@ -185,6 +367,46 @@ types:
     properties:
       services:
         type: Service[]
+
+  TranslationListResponse:
+    properties:
+      translations:
+        description: Список ключей-переводов
+        type: string[]
+
+  AllSettingsResponse:
+    properties:
+      phone:
+        description: Контактный телефон
+        type: string
+      email:
+        description: Email-адрес
+        type: string
+      privacy:
+        description: Политика конфиденциальности
+        type: string
+      socialLinks:
+        description: Список соц. сетей
+        type: SocialLink[] | nil
+        required: false
+      achievements:
+        description: Список достижений
+        type: Achievement[] | nil
+        required: false
+      translations:
+        description: Список ключей-переводов
+        type: string[]
+      video:
+        description: Видео для слайда
+        type: Video
+      menuLinks:
+        description: Ссылки для меню
+        type: MenuLink[] | nil
+
+  PartnersListResponse:
+    properties:
+      partners:
+        type: Partner[]
 
   # Exceptions
 

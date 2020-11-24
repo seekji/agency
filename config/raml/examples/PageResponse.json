@@ -1,0 +1,68 @@
+{
+  "id": 2,
+  "title": "test",
+  "slug": "test-1",
+  "type": "about",
+  "coordinates": null,
+  "description": null,
+  "achievements": [
+    {
+      "place": 2,
+      "year": 2019,
+      "title": "test",
+      "text": "test"
+    },
+    {
+      "place": 1,
+      "year": 2020,
+      "title": "test",
+      "text": "test"
+    }
+  ],
+  "history": null,
+  "specialists": [
+    {
+      "id": 1,
+      "name": "test",
+      "position": "test",
+      "quote": null,
+      "picture": null
+    },
+    {
+      "id": 2,
+      "name": "test",
+      "position": "test",
+      "quote": null,
+      "picture": {
+        "filename": "Selection_060.png",
+        "size": "166.3 kB",
+        "copyright": null,
+        "description": null,
+        "src": "http://localhost:8080/uploads/media/specialists/0001/01/7e7eb430b596137dcf9bc6a148d945ee6eae144f.png",
+        "height": 626,
+        "width": 345,
+        "context": "specialists",
+        "id": 4
+      }
+    }
+  ],
+  "treatments": [
+    {
+      "id": 1,
+      "title": "test",
+      "text": "<p>test</p>",
+      "sort": 1,
+      "picture": {
+        "filename": "Selection_058.png",
+        "size": "104.1 kB",
+        "copyright": null,
+        "description": null,
+        "src": "http://localhost:8080/uploads/media/static_pages/0001/01/af20f938a524ec456761152600beffbf25691c90.png",
+        "height": 571,
+        "width": 1364,
+        "context": "static_pages",
+        "id": 5
+      }
+    }
+  ]
+}

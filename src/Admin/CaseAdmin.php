@@ -119,7 +119,7 @@ class CaseAdmin extends AbstractAdmin
         ->end()
         ->tab('Задача и решение')
             ->with('Задача', ['class' => 'col-md-6'])
-                ->add('taskTitle')
+                ->add('taskTitle', CKEditorType::class)
             ->end()
             ->with('Решение', ['class' => 'col-md-6'])
                 ->add('blocks', \Sonata\Form\Type\CollectionType::class, [

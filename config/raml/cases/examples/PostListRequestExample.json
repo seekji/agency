@@ -2,5 +2,6 @@
   "limit": 10,
   "offset": 0,
   "locale": "ru",
-  "services": [1, 2]
+  "services": [1, 2],
+  "branches": [1, 2]
 }

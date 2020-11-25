@@ -9,7 +9,7 @@ use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Form\Type\ChoiceFieldMaskType;
-use Sonata\AdminBundle\Form\Type\ModelType;
+use Sonata\AdminBundle\Form\Type\ModelListType;
 
 class CaseBlockAdmin extends AbstractAdmin
 {
@@ -27,7 +27,7 @@ class CaseBlockAdmin extends AbstractAdmin
                 ],
                 'required' => true
             ])
-            ->add('media', ModelType::class)
+            ->add('media', ModelListType::class)
             ->add('text', CKEditorType::class)
         ;
     }

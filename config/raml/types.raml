@@ -217,7 +217,7 @@ types:
         type: string
       excerpt:
         description: Краткое описание
-        type: string
+        type: string | nil
         required: false
       previewPicture:
         type: Picture | nil
@@ -346,22 +346,6 @@ types:
   CaseResponse:
     type: Case
 
-  CaseListResponse:
-    properties:
-      limit:
-        description: Кол-во записей в списке
-        type: number
-        required: false
-        minimum: 1
-        maximum: 30
-      offset:
-        description: Отступ для записей
-        type: number
-        minimum: 0
-        required: false
-      cases:
-        type: Case[]
-
   BranchListResponse:
     properties:
       branches:
@@ -417,6 +401,22 @@ types:
     properties:
       partners:
         type: Partner[]
+
+  CasesListResponse:
+    properties:
+      limit:
+        description: Кол-во записей в списке
+        type: number
+        required: false
+        minimum: 1
+        maximum: 30
+      offset:
+        description: Отступ для записей
+        type: number
+        minimum: 0
+        required: false
+      cases:
+        type: Case[]
 
   # Exceptions
 

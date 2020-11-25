@@ -18,7 +18,7 @@ traits: !include common.raml
       200:
         body:
           application/json:
-            type: types.CaseListResponse
+            type: types.CasesListResponse
             example: !include cases/examples/ListResponse.json
 
   post:
@@ -26,13 +26,13 @@ traits: !include common.raml
     description: "Список кейсов, фильтрация"
     body:
       application/json:
-        type: types.CaseFilterRequest
+        type: types.CasesFilterRequest
         example: !include cases/examples/PostListRequestExample.json
     responses:
       200:
         body:
           application/json:
-            type: types.CaseListResponse
+            type: types.CasesListResponse
             example: !include cases/examples/ListResponse.json
 
   /{slug}:

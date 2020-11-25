@@ -20,9 +20,9 @@ class CaseBlock
     public ?string $text = null;
 
     /**
-     * @Type("integer")
+     * @Type("string")
      */
-    public ?int $type;
+    public ?string $type;
 
     /**
      * @Type("App\Dto\Api\Media\Media")
@@ -33,7 +33,7 @@ class CaseBlock
     {
         $this->id = $caseBlock->getId();
         $this->text = $caseBlock->getText();
-        $this->type = $caseBlock->getType();
+        $this->type = \App\Entity\CaseBlock::TYPES_LIST[$caseBlock->getType()];
 
         if ($caseBlock->getMedia() instanceof \App\Entity\Media) {
             $this->media = new Media($caseBlock->getMedia());

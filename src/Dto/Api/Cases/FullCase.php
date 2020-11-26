@@ -57,6 +57,11 @@ class FullCase
     public ?string $taskTitle;
 
     /**
+     * @Type("string")
+     */
+    public ?string $resultType = null;
+
+    /**
      * @Type("App\Application\Sonata\MediaBundle\Entity\Media")
      */
     public ?SonataMedia $previewPicture = null;
@@ -111,6 +116,7 @@ class FullCase
         $this->tools = $case->getTools();
         $this->taskTitle = $case->getTaskTitle();
         $this->runningTitle = $case->getRunningTitle();
+        $this->resultType = Cases::RESULTS_LIST[$case->getResultType()];
 
         if ($case->getSpecialist()) {
             $this->specialist = new Specialist($case->getSpecialist());

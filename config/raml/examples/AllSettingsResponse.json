@@ -21,7 +21,8 @@
       "description": "довольны"
     }
   ],
-  "privacy": "<p>empty privacy&quot;</p>",
+  "privacy": "/page/",
+  "terms": "/page/",
   "phone": "+79999999999",
   "email": "test@test.com",
   "video": {

@@ -30,8 +30,8 @@ class Cases implements SluggableInterface, TimestampableInterface, LocaleInterfa
     public const RESULT_OFFER = 1;
 
     public const RESULTS_LIST = [
-        self::RESULT_OFFER => 'Предложение',
-        self::RESULT_ACHIEVEMENT => 'Достижения',
+        self::RESULT_OFFER => 'offer',
+        self::RESULT_ACHIEVEMENT => 'achievement',
     ];
 
     /**

@@ -129,6 +129,11 @@ class Page implements SluggableInterface, TimestampableInterface, LocaleInterfac
         return ['title'];
     }
 
+    public function shouldRegenerateSlugOnUpdate(): bool
+    {
+        return false;
+    }
+
     public function getCoordinates(): ?string
     {
         return $this->coordinates;

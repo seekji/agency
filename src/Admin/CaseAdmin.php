@@ -128,7 +128,7 @@ class CaseAdmin extends AbstractAdmin
                 ], [
                     'edit' => 'inline',
                     'inline' => 'standard',
-                    'sortable' => 'position',
+                    'sortable' => 'sort',
                 ])
             ->end()
         ->end()

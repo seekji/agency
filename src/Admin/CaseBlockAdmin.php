@@ -10,6 +10,7 @@ use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Form\Type\ChoiceFieldMaskType;
 use Sonata\AdminBundle\Form\Type\ModelListType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
 class CaseBlockAdmin extends AbstractAdmin
 {
@@ -29,6 +30,7 @@ class CaseBlockAdmin extends AbstractAdmin
             ])
             ->add('media', ModelListType::class)
             ->add('text', CKEditorType::class)
+            ->add('sort', HiddenType::class)
         ;
     }
 }

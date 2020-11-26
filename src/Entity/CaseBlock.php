@@ -45,6 +45,11 @@ class CaseBlock
      */
     private $cases;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $sort = 0;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -94,6 +99,18 @@ class CaseBlock
     public function setCases(?Cases $cases): self
     {
         $this->cases = $cases;
+
+        return $this;
+    }
+
+    public function getSort(): ?int
+    {
+        return $this->sort;
+    }
+
+    public function setSort(?int $sort): self
+    {
+        $this->sort = $sort;
 
         return $this;
     }

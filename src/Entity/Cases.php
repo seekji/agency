@@ -144,6 +144,7 @@ class Cases implements SluggableInterface, TimestampableInterface, LocaleInterfa
     /**
      * @ORM\OneToMany(targetEntity=CaseBlock::class, mappedBy="cases", orphanRemoval=true, cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
+     * @Orm\OrderBy({"sort" = "ASC"})
      * @Assert\NotBlank()
      * @Assert\Count(min=1, minMessage="case.blocks.count.min")
      */

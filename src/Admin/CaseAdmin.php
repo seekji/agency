@@ -69,6 +69,7 @@ class CaseAdmin extends AbstractAdmin
         }
 
         $form
+                ->add('runningTitle')
                 ->add('excerpt')
                 ->add('similarCase')
                 ->add('services', ModelType::class, ['multiple' => true, 'by_reference' => false])
@@ -88,7 +89,6 @@ class CaseAdmin extends AbstractAdmin
         ->end()
         ->tab('Детальный слайд')
             ->with('Слайд')
-                ->add('slideTitle')
                 ->add('detailMedia', ModelListType::class, ['required' => true])
             ->end()
         ->end()

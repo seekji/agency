@@ -41,9 +41,14 @@ class Settings implements TimestampableInterface, LocaleInterface
     private string $email;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
     private ?string $privacy;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private ?string $terms;
 
     /**
      * @ORM\Column(type="json")
@@ -125,6 +130,18 @@ class Settings implements TimestampableInterface, LocaleInterface
     public function setPrivacy(?string $privacy): self
     {
         $this->privacy = $privacy;
+
+        return $this;
+    }
+
+    public function getTerms(): ?string
+    {
+        return $this->terms;
+    }
+
+    public function setTerms(?string $terms): self
+    {
+        $this->terms = $terms;
 
         return $this;
     }

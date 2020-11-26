@@ -100,9 +100,9 @@ class PageAdmin extends AbstractAdmin
                     ])
                     // contacts
                     ->add('coordinates', null, [
-                        'help' => 'Формат: `широта;долгота`, например: <strong>39.1;39.2</strong>',
+                        'help' => 'Формат: `широта;долгота`, например: <strong>39.1,39.2</strong>',
                         'constraints' => [
-                            new Regex("/^([-]?)([\d]+)((((\.)(\d+))?(;)))(([-]?)([\d]+)((\.)(\d+))?)$/")
+                            new Regex("/^([-]?)([\d]+)((((\.)(\d+))?(,)))(([-]?)([\d]+)((\.)(\d+))?)$/")
                         ]
                     ])
                 ->end()

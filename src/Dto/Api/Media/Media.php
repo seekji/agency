@@ -25,6 +25,11 @@ class Media
     public ?string $type;
 
     /**
+     * @Type("string")
+     */
+    public ?string $href = null;
+
+    /**
      * @Type("App\Application\Sonata\MediaBundle\Entity\Media")
      */
     public ?SonataMedia $file = null;
@@ -34,6 +39,7 @@ class Media
         $this->id = $media->getId();
         $this->title = $media->getTitle();
         $this->type = \App\Entity\Media::TYPE_LIST[$media->getType()];
+        $this->href = $media->getHref();
 
         if ($media->getMedia() instanceof SonataMedia) {
             $this->file = $media->getMedia();

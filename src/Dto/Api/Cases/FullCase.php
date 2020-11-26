@@ -29,6 +29,11 @@ class FullCase
     /**
      * @Type("string")
      */
+    public ?string $runningTitle = null;
+
+    /**
+     * @Type("string")
+     */
     public ?string $slug;
 
     /**
@@ -45,11 +50,6 @@ class FullCase
      * @Type("string")
      */
     public ?string $offer = null;
-
-    /**
-     * @Type("string")
-     */
-    public ?string $slideTitle;
 
     /**
      * @Type("string")
@@ -109,8 +109,8 @@ class FullCase
         $this->slug = $case->getSlug();
         $this->excerpt = $case->getExcerpt();
         $this->tools = $case->getTools();
-        $this->slideTitle = $case->getSlideTitle();
         $this->taskTitle = $case->getTaskTitle();
+        $this->runningTitle = $case->getRunningTitle();
 
         if ($case->getSpecialist()) {
             $this->specialist = new Specialist($case->getSpecialist());
@@ -155,6 +155,5 @@ class FullCase
         } else {
             $this->offer = $case->getOffer();
         }
-
     }
 }

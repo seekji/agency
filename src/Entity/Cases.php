@@ -107,11 +107,6 @@ class Cases implements SluggableInterface, TimestampableInterface, LocaleInterfa
     private $achievements = [];
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $slideTitle;
-
-    /**
      * @ORM\Column(type="text", nullable=true)
      */
     private $offer;
@@ -158,6 +153,11 @@ class Cases implements SluggableInterface, TimestampableInterface, LocaleInterfa
      * @ORM\Column(type="integer", nullable=true)
      */
     private $resultType;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $runningTitle;
 
     public function __construct()
     {
@@ -329,18 +329,6 @@ class Cases implements SluggableInterface, TimestampableInterface, LocaleInterfa
         return $this;
     }
 
-    public function getSlideTitle(): ?string
-    {
-        return $this->slideTitle;
-    }
-
-    public function setSlideTitle(?string $slideTitle): self
-    {
-        $this->slideTitle = $slideTitle;
-
-        return $this;
-    }
-
     public function getOffer(): ?string
     {
         return $this->offer;
@@ -451,6 +439,18 @@ class Cases implements SluggableInterface, TimestampableInterface, LocaleInterfa
     public function setResultType(?int $resultType): self
     {
         $this->resultType = $resultType;
+
+        return $this;
+    }
+
+    public function getRunningTitle(): ?string
+    {
+        return $this->runningTitle;
+    }
+
+    public function setRunningTitle(?string $runningTitle): self
+    {
+        $this->runningTitle = $runningTitle;
 
         return $this;
     }

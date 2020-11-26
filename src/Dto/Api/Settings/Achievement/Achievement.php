@@ -21,7 +21,7 @@ class Achievement
     /**
      * @Type("string")
      */
-    public string $title;
+    public ?string $title = null;
 
     /**
      * @Type("string")
@@ -32,7 +32,7 @@ class Achievement
     {
         $this->count = $achievement['count'];
         $this->countType = $achievement['count_type'] ? : null;
-        $this->title = $achievement['title'];
+        $this->title = $achievement['title'] ? : null;
         $this->description = $achievement['description'];
     }
 }

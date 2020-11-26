@@ -6,6 +6,7 @@ namespace App\Dto\Api\Cases;
 
 use App\Application\Sonata\MediaBundle\Entity\Media;
 use App\Entity\Cases;
+use App\Entity\Client;
 use JMS\Serializer\Annotation\Type;
 
 class OneCase
@@ -31,6 +32,11 @@ class OneCase
     public ?string $excerpt;
 
     /**
+     * @Type("App\Dto\Api\Client\Client")
+     */
+    public $client;
+
+    /**
      * @Type("App\Application\Sonata\MediaBundle\Entity\Media")
      */
     public ?Media $previewPicture = null;
@@ -44,6 +50,10 @@ class OneCase
 
         if ($case->getPreviewPicture() instanceof Media) {
             $this->previewPicture = $case->getPreviewPicture();
+        }
+
+        if ($case->getClient() instanceof Client) {
+            $this->client = new \App\Dto\Api\Client\Client($case->getClient());
         }
     }
 }

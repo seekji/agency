@@ -55,8 +55,8 @@ class MediaAdmin extends AbstractAdmin
                 ->add('type', ChoiceFieldMaskType::class, [
                     'choices' => array_flip(Media::TYPE_LIST),
                     'map' => [
-                        Media::TYPE_VIDEO => ['media'],
                         Media::TYPE_PICTURE => ['media'],
+                        Media::TYPE_VIDEO => ['media'],
                         Media::TYPE_HREF => ['href', 'media'],
                     ],
                     'required' => true

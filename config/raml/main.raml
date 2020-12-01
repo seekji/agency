@@ -131,3 +131,25 @@ traits: !include common.raml
         body:
           application/json:
             type: types.PartnersListResponse
+
+/technologies:
+  get:
+    is: [hasErrors, hasCommonErrors, localable, pageable]
+    description: "Список технологий"
+    responses:
+      200:
+        body:
+          application/json:
+            type: types.TechnologiesListResponse
+            example: !include examples/TechnologiesListResponse.json
+
+  /{slug}:
+    get:
+      is: [hasErrors, hasCommonErrors, localable]
+      description: "Технология"
+      responses:
+        200:
+          body:
+            application/json:
+              type: types.TechnologyResponse
+              example: !include examples/TechnologyResponse.json

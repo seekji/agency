@@ -45,6 +45,11 @@ class ListResponse
     /**
      * @Type("string")
      */
+    public $terms;
+
+    /**
+     * @Type("string")
+     */
     public $phone;
 
     /**
@@ -68,6 +73,7 @@ class ListResponse
         $this->email = $settings->getEmail();
         $this->privacy = $settings->getPrivacy();
         $this->address = $settings->getAddress();
+        $this->terms = $settings->getTerms();
         $this->video = new Video($settings->getVideo());
 
         if ($settings->getTranslations()) {

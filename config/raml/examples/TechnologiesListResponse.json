@@ -1,0 +1,56 @@
+{
+  "technologies": [
+    {
+      "id": 3,
+      "sort": 10,
+      "type": "aizek",
+      "title": "test",
+      "slug": "test-1",
+      "excerpt": "test",
+      "media": {
+        "id": 3,
+        "title": "test",
+        "type": "Picture",
+        "href": null,
+        "file": {
+          "filename": "Selection_059.png",
+          "size": "2.1 kB",
+          "copyright": null,
+          "description": null,
+          "src": "http://localhost:8080/uploads/media/medias/0001/01/1a5d8f20487880a6bc3acf9434aac325900b17cd.png",
+          "height": 28,
+          "width": 169,
+          "context": "medias",
+          "id": 2
+        }
+      }
+    },
+    {
+      "id": 2,
+      "sort": 0,
+      "type": "default",
+      "title": "test",
+      "slug": "test",
+      "excerpt": "test",
+      "media": {
+        "id": 1,
+        "title": "test",
+        "type": "Video",
+        "href": null,
+        "file": {
+          "filename": "Selection_059.png",
+          "size": "2.1 kB",
+          "copyright": null,
+          "description": null,
+          "src": "http://localhost:8080/uploads/media/medias/0001/01/1a5d8f20487880a6bc3acf9434aac325900b17cd.png",
+          "height": 28,
+          "width": 169,
+          "context": "medias",
+          "id": 2
+        }
+      }
+    }
+  ],
+  "limit": 50,
+  "offset": 0
+}

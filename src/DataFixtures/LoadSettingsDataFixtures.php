@@ -23,6 +23,8 @@ class LoadSettingsDataFixtures extends Fixture implements OrderedFixtureInterfac
             $settings->setPhone('+79999999999');
             $settings->setEmail('test@test.com');
             $settings->setPrivacy('empty privacy');
+            $settings->setTerms('test');
+            $settings->setAddress('loled');
             $settings->setVideo($this->getReference('video_rozetked'));
             $settings->setTranslations([
                 [

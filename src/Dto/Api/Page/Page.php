@@ -28,11 +28,17 @@ class Page
      */
     public string $type;
 
+    /**
+     * @Type("string")
+     */
+    public ?string $excerpt = null;
+
     public function __construct(?\App\Entity\Page $page = null)
     {
         $this->id = $page->getId();
         $this->title = $page->getTitle();
         $this->slug = $page->getSlug();
         $this->type = \App\Entity\Page::TYPE_LIST[$page->getType()];
+        $this->excerpt = $page->getExcerpt();
     }
 }

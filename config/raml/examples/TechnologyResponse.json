@@ -1,0 +1,108 @@
+{
+  "id": 2,
+  "sort": 0,
+  "type": "default",
+  "title": "test",
+  "slug": "test",
+  "excerpt": "test",
+  "previewPicture": {
+    "id": 1,
+    "title": "test",
+    "type": "Video",
+    "href": null,
+    "file": {
+      "filename": "Selection_059.png",
+      "size": "2.1 kB",
+      "copyright": null,
+      "description": null,
+      "src": "http://localhost:8080/uploads/media/medias/0001/01/1a5d8f20487880a6bc3acf9434aac325900b17cd.png",
+      "height": 28,
+      "width": 169,
+      "context": "medias",
+      "id": 2
+    }
+  },
+  "detailPicture": {
+    "filename": "Selection_074.png",
+    "size": "24.9 kB",
+    "copyright": null,
+    "description": null,
+    "src": "http://localhost:8080/uploads/media/technologies/0001/01/b522f58ff34f9cd6032b2cf38f38455207a0740a.png",
+    "height": 126,
+    "width": 1508,
+    "context": "technologies",
+    "id": 12
+  },
+  "blocks": [
+    {
+      "id": 6,
+      "sort": 1,
+      "groupName": "test",
+      "title": "test",
+      "text": "<p>test</p>",
+      "picture": {
+        "filename": "Selection_077.png",
+        "size": "14.9 kB",
+        "copyright": null,
+        "description": null,
+        "src": "http://localhost:8080/uploads/media/default/0001/01/9aa3a0320c8a2b2d1eb989d3678bb422a375b00a.png",
+        "height": 83,
+        "width": 958,
+        "context": "default",
+        "id": 9
+      }
+    }
+  ],
+  "formattedBlocks": {
+    "test": [
+      {
+        "id": 6,
+        "sort": 1,
+        "groupName": "test",
+        "title": "test",
+        "text": "<p>test</p>",
+        "picture": {
+          "filename": "Selection_077.png",
+          "size": "14.9 kB",
+          "copyright": null,
+          "description": null,
+          "src": "http://localhost:8080/uploads/media/default/0001/01/9aa3a0320c8a2b2d1eb989d3678bb422a375b00a.png",
+          "height": 83,
+          "width": 958,
+          "context": "default",
+          "id": 9
+        }
+      }
+    ]
+  },
+  "AizekText": null,
+  "AizekAchievementsTitle": null,
+  "AizekPictureBlock": null,
+  "AizekIcons": null,
+  "AizekAchievements": null,
+  "nextTechnology": {
+    "id": 3,
+    "sort": 10,
+    "type": "aizek",
+    "title": "test",
+    "slug": "test-1",
+    "excerpt": "test",
+    "media": {
+      "id": 3,
+      "title": "test",
+      "type": "Picture",
+      "href": null,
+      "file": {
+        "filename": "Selection_059.png",
+        "size": "2.1 kB",
+        "copyright": null,
+        "description": null,
+        "src": "http://localhost:8080/uploads/media/medias/0001/01/1a5d8f20487880a6bc3acf9434aac325900b17cd.png",
+        "height": 28,
+        "width": 169,
+        "context": "medias",
+        "id": 2
+      }
+    }
+  }
+}

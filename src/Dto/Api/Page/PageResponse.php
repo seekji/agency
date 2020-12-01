@@ -34,6 +34,11 @@ class PageResponse
      */
     public ?string $coordinates = null;
 
+    /**
+     * @Type("string")
+     */
+    public ?string $excerpt = null;
+
      /**
       * @Type("string")
       */
@@ -68,6 +73,8 @@ class PageResponse
         $this->achievements = $page->getAchievements();
         $this->coordinates = $page->getCoordinates();
         $this->description = $page->getDescription();
+        $this->history = $page->getHistory();
+        $this->excerpt = $page->getExcerpt();
 
         if ($page->getSpecialists()) {
             foreach ($page->getSpecialists() as $specialist) {

@@ -22,3 +22,8 @@ case:
 achievements:
   count:
     max: Поле `Достижения` превышает лимит.
+
+technology:
+  blocks:
+    count:
+      min: Необходимо добавить минимум 1 блок с описанием технологии.

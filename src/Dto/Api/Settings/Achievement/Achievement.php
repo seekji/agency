@@ -32,7 +32,7 @@ class Achievement
     {
         $this->count = $achievement['count'];
         $this->countType = $achievement['count_type'] ? : null;
-        $this->title = $achievement['title'] ? : null;
+        $this->title = isset($achievement['title']) ? $achievement['title'] : null;
         $this->description = $achievement['description'];
     }
 }

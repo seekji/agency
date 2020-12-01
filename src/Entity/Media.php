@@ -21,8 +21,8 @@ class Media implements TimestampableInterface
     public const TYPE_HREF = 2;
 
     public const TYPE_LIST = [
-        self::TYPE_VIDEO => 'Video',
         self::TYPE_PICTURE => 'Picture',
+        self::TYPE_VIDEO => 'Video',
         self::TYPE_HREF => 'Link'
     ];
 
@@ -57,6 +57,11 @@ class Media implements TimestampableInterface
      * @Assert\NotBlank()
      */
     private ?SonataMedia $media;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Technology::class, inversedBy="AizekIcons")
+     */
+    private $technology;
 
     public function getId(): ?int
     {
@@ -114,5 +119,17 @@ class Media implements TimestampableInterface
     public function __toString(): string
     {
         return $this->title ?: '';
+    }
+
+    public function getTechnology(): ?Technology
+    {
+        return $this->technology;
+    }
+
+    public function setTechnology(?Technology $technology): self
+    {
+        $this->technology = $technology;
+
+        return $this;
     }
 }

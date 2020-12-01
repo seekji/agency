@@ -1,0 +1,68 @@
+#%RAML 1.0 Library
+
+types:
+  File:
+    properties:
+      id:
+        type: integer
+      src:
+        type: string
+      filename:
+        type: string
+      description:
+        type: string | nil
+        required: false
+      height:
+        type: integer | nil
+        required: false
+      width:
+        type: integer | nil
+        required: false
+      context:
+        type: string | nil
+        required: false
+      copyright:
+        type: string | nil
+        required: false
+      size:
+        type: string
+
+  Media:
+    properties:
+      id:
+        description: Идентификатор
+        type: integer
+      title:
+        description: Наименование услуги
+        type: string | nil
+        required: false
+      type:
+        description: Тип медиа файла
+        type: string
+      file:
+        description: Медиа-файл
+        type: File
+
+  Service:
+    properties:
+      id:
+        description: Идентификатор
+        type: integer
+      title:
+        description: Наименование услуги
+        type: string
+      slug:
+        description: Уникальный слаг (ЧПУ)
+        type: string
+      sort:
+        description: Индекс сортировки
+        type: integer
+      media:
+        description: Медиа-файл для курсора
+        type: Media | nil
+        required: false
+
+  ListResponse:
+    properties:
+      services:
+        type: Service[]

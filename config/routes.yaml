@@ -1,3 +1,7 @@
+seo:
+  resource: "@SeoBundle/Admin/Controller/"
+  type:     annotation
+
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index

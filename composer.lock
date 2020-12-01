@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b51dfc880613c50144d15952832a7905",
+    "content-hash": "d72748dae73f0a5cee06f470ecaaee5f",
     "packages": [
         {
             "name": "brick/math",
@@ -3968,6 +3968,85 @@
                 }
             ],
             "time": "2020-08-18T17:17:46+00:00"
+        },
+        {
+            "name": "ramsey/uuid-doctrine",
+            "version": "1.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ramsey/uuid-doctrine.git",
+                "reference": "9facc4689547e72e03c1e18df4a0ee162b2778b0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ramsey/uuid-doctrine/zipball/9facc4689547e72e03c1e18df4a0ee162b2778b0",
+                "reference": "9facc4689547e72e03c1e18df4a0ee162b2778b0",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/orm": "^2.5",
+                "php": "^5.4 | ^7 | ^8",
+                "ramsey/uuid": "^3.5 | ^4"
+            },
+            "require-dev": {
+                "jakub-onderka/php-parallel-lint": "^1",
+                "mockery/mockery": "^0.9 | ^1",
+                "phpunit/phpunit": "^4.8.36 | ^5.7 | ^6.5 | ^7",
+                "squizlabs/php_codesniffer": "^3.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Ramsey\\Uuid\\Doctrine\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Allow the use of ramsey/uuid as a Doctrine field type.",
+            "homepage": "https://github.com/ramsey/uuid-doctrine",
+            "keywords": [
+                "database",
+                "doctrine",
+                "guid",
+                "identifier",
+                "uuid"
+            ],
+            "support": {
+                "issues": "https://github.com/ramsey/uuid-doctrine/issues",
+                "rss": "https://github.com/ramsey/uuid-doctrine/releases.atom",
+                "source": "https://github.com/ramsey/uuid-doctrine",
+                "wiki": "https://github.com/ramsey/uuid/wiki"
+            },
+            "time": "2020-01-27T05:09:17+00:00"
+        },
+        {
+            "name": "seekji/seo-bundle",
+            "version": "1.0.x-dev",
+            "dist": {
+                "type": "path",
+                "url": "./packages/seo-bundle",
+                "reference": "08c5e12af9e2e68ea3e758594c4aca6702e1d5ec"
+            },
+            "type": "library",
+            "extra": {
+                "branch-version": "1.0-dev"
+            },
+            "autoload": {
+                "psr-4": {
+                    "Seo\\SeoBundle\\": ""
+                }
+            },
+            "authors": [
+                {
+                    "name": "Seo"
+                }
+            ],
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
         },
         {
             "name": "sensio/framework-extra-bundle",
@@ -11648,7 +11727,8 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "raml/php-raml-parser": 20,
-        "raml/raml-bundle": 20
+        "raml/raml-bundle": 20,
+        "seekji/seo-bundle": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

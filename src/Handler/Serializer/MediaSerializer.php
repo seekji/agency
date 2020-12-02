@@ -36,7 +36,7 @@ class MediaSerializer
             'size' => sprintf("%.1f kB", $media->getSize() / 1000),
             'copyright' => $media->getCopyright(),
             'description' => $media->getDescription(),
-            'src' => $host . $this->$provider->generatePublicUrl($media, 'reference'),
+            'src' => $this->$provider->generatePublicUrl($media, 'reference'),
             'height' => $media->getHeight(),
             'width' => $media->getWidth(),
             'context' => $media->getContext(),

@@ -43,13 +43,7 @@ class MetadataFactory
         $this->matcher = new RuleMatcher();
     }
 
-    /**
-     * @param $url
-     * @param array $context
-     *
-     * @return null|CompiledMetadata
-     */
-    public function load($url, array $context)
+    public function load(string $url, array $context, string $locale, string $slug = null)
     {
         if ($this->cache) {
             if ($cachedMetadata = $this->cache->fetch($url)) {
@@ -65,7 +59,7 @@ class MetadataFactory
             return null;
         }
 
-        $compiledMetadata = $this->compiler->compileMetadata($rule, $context);
+        $compiledMetadata = $this->compiler->compileMetadata($rule, array_merge(['locale' => $locale, 'slug' => $slug], $context));
 
         if ($this->cache) {
             $this->cache->save($url, $compiledMetadata);

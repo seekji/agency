@@ -1,4 +1,9 @@
 services:
+    Seo\SeoBundle\Service\SeoService:
+        public: true
+        arguments:
+            - "@seo.metadata_factory"
+
     seo.doctrine_rules_repository:
         class: Doctrine\ORM\EntityRepository
         factory: ["@doctrine.orm.entity_manager", "getRepository"]
@@ -16,6 +21,11 @@ services:
         arguments:
             - "@seo.doctrine_rules_repository"
 
+    seo.compiler_by_entity:
+        class: Seo\SeoBundle\Metadata\Compiler\CompilerByEntity
+        arguments:
+            - "@doctrine.orm.entity_manager"
+
     seo.compiler:
         class: Seo\SeoBundle\Metadata\Compiler\Compiler
         arguments:
@@ -27,7 +37,7 @@ services:
         autowire: true
         arguments:
             - "@seo.rules_provider_doctrine"
-            - "@seo.compiler"
+            - "@seo.compiler_by_entity"
             - "@?seo.metadata_cache"
 
     seo.twig_extension:

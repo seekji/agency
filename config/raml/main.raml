@@ -153,3 +153,18 @@ traits: !include common.raml
             application/json:
               type: types.TechnologyResponse
               example: !include examples/TechnologyResponse.json
+
+/seo:
+  post:
+    is: [hasHeaderMissing, hasCommonErrors, hasErrors]
+    description: "Сео"
+    body:
+      application/json:
+        type: types.SeoRequest
+        example: !include examples/SeoRequest.json
+    responses:
+      200:
+        body:
+          application/json:
+            type: types.SeoResponse
+            example: !include examples/SeoResponse.json

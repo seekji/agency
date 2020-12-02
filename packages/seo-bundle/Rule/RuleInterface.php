@@ -9,6 +9,16 @@ interface RuleInterface
     /**
      * @return string
      */
+    public function getEntity();
+
+    /**
+     * @return string
+     */
+    public function getLocale();
+
+    /**
+     * @return string
+     */
     public function getPattern();
 
     /**

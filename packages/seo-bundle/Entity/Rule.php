@@ -38,16 +38,26 @@ class Rule implements RuleInterface
     protected $title;
 
     /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $entity;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $locale = 'ru';
+
+    /**
      * @var array
      *
-     * @ORM\Column(type="array")
+     * @ORM\Column(type="json")
      */
     protected $metaTags = [];
 
     /**
      * @var array
      *
-     * @ORM\Column(type="array")
+     * @ORM\Column(type="json")
      */
     protected $extra = [];
 
@@ -137,11 +147,7 @@ class Rule implements RuleInterface
      */
     public function setMetaTags($metaTags)
     {
-        $this->metaTags = [];
-
-        foreach ($metaTags as $metaTag) {
-            $this->metaTags[] = clone $metaTag;
-        }
+        $this->metaTags = $metaTags;
 
         return $this;
     }
@@ -161,11 +167,7 @@ class Rule implements RuleInterface
      */
     public function setExtra(array $extra)
     {
-        $this->extra = [];
-
-        foreach ($extra as $data) {
-            $this->extra[] = clone $data;
-        }
+        $this->extra = $extra;
 
         return $this;
     }
@@ -189,4 +191,29 @@ class Rule implements RuleInterface
 
         return $this;
     }
+
+    public function setEntity(string $entity)
+    {
+        $this->entity = $entity;
+
+        return $this;
+    }
+
+    public function getEntity()
+    {
+        return $this->entity;
+    }
+
+    public function getLocale()
+    {
+        return $this->locale;
+    }
+
+    public function setLocale(string $locale)
+    {
+        $this->locale = $locale;
+
+        return $this;
+    }
+
 }

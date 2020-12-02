@@ -19,29 +19,4 @@ class ExtraDataType extends AbstractType
             ->add('name', TextType::class, ['label' => 'Название поля'])
             ->add('value');
     }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
-    {
-        $this->configureOptions($resolver);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function configureOptions(OptionsResolver $resolver)
-    {
-        $resolver
-            ->setDefaults(['data_class', 'Seo\SeoBundle\Model\ExtraData']);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getName()
-    {
-        return 'extra_data';
-    }
 }

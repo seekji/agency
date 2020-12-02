@@ -54,6 +54,8 @@ class RuleAdmin extends AbstractAdmin
             ->with('Основные настройки правила')
             ->add('pattern', UrlPatternType::class, ['sonata_help' => $this->getPatternHelp()])
             ->add('title', TextType::class, ['required' => false, 'sonata_help' => 'Заголовок сайта, отображается в тегах &lt;title&gt;&lt;/title&gt;'])
+            ->add('entity', TextType::class, ['sonata_help' => 'Необходимо указать для динамических свойств.'])
+            ->add('locale', TextType::class, ['sonata_help' => 'Принимает два значения: en|ru.'])
             ->add('priority', TextType::class, ['sonata_help' => 'Приоритет правила. Если url соответстует нескольким правилам, то применяется правило с наибольшим приоритетом'])
             ->end()
             ->end()

@@ -343,6 +343,21 @@ types:
 
   # Requests
 
+  SeoRequest:
+    properties:
+      locale:
+        description: Локаль для переводов
+        enum: [en, ru]
+        example: ru
+        default: ru
+      url:
+        type: string
+        description: Полный URL-адрес страницы
+      slug:
+        type: string | nil
+        required: false
+        description: Слаг для сущности
+
   CasesFilterRequest:
     properties:
       locale:
@@ -370,7 +385,41 @@ types:
         type: number[]
         required: false
 
+  SeoMetaTag:
+    properties:
+      name:
+        type: string
+        description: Наименования мета-тега. Например, description.
+      content:
+        type: string
+        description: Содержимое мета-тега.
+      property:
+        type: string | number | nil
+        required: false
+
+  SeoExtra:
+    properties:
+      name:
+        type: string
+      value:
+        type: string
+
   # Responses
+  SeoResponse:
+    properties:
+      title:
+        type: string
+        description: Заголовок страницы
+      metaTags:
+        type: SeoMetaTag[] | nil
+        required: false
+      extra:
+        type: SeoExtra[] | nil
+        required: false
+      compiledAt:
+        type: string
+        description: Дата формирования
+
   PageResponse:
     type: Page
 

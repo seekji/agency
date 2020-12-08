@@ -22,6 +22,7 @@ class TechnologyAdmin extends AbstractAdmin
     protected function configureRoutes(RouteCollection $collection)
     {
         $collection
+            ->add('clone', $this->getRouterIdParameter() . '/clone')
             ->remove('delete');
     }
 
@@ -45,6 +46,10 @@ class TechnologyAdmin extends AbstractAdmin
             ->add('_action', null, [
                 'actions' => [
                     'edit' => [],
+                    'clone' => [
+                        'template' => 'admin/CRUD/list__action_clone.html.twig',
+                    ],
+                    'delete' => [],
                 ],
             ]);
     }

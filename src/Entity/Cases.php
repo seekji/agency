@@ -43,17 +43,24 @@ class Cases implements SluggableInterface, TimestampableInterface, LocaleInterfa
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
      */
     private ?string $title;
 
     /**
      * @ORM\ManyToMany(targetEntity=Service::class)
+     * @Assert\NotBlank()
+     * @Assert\Count(
+     *     min=1,
+         *     minMessage="services.count.min"
+     * )
      */
     private ?Collection $services;
 
     /**
      * @ORM\ManyToOne(targetEntity=Branch::class)
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotBlank()
      */
     private ?Branch $branch;
 
@@ -94,6 +101,7 @@ class Cases implements SluggableInterface, TimestampableInterface, LocaleInterfa
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank()
      */
     private $taskTitle;
 

@@ -228,6 +228,9 @@ types:
       services:
         type: Service[] | nil
         required: false
+      isItemBig:
+        type: boolean
+        required: false
 
   Technology:
     properties:
@@ -471,10 +474,12 @@ types:
         type: string
       privacy:
         description: Политика конфиденциальности
-        type: string
+        type: string | nil
+        required: false
       terms:
         description: Пользовательское соглашение
-        type: string
+        type: string | nil
+        required: false
       socialLinks:
         description: Список соц. сетей
         type: SocialLink[] | nil

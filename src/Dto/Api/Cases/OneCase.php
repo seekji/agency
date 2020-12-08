@@ -32,6 +32,11 @@ class OneCase
     public ?string $excerpt;
 
     /**
+     * @Type("boolean")
+     */
+    public $isItemBig;
+
+    /**
      * @Type("App\Dto\Api\Client\Client")
      */
     public $client;
@@ -47,6 +52,7 @@ class OneCase
         $this->title = $case->getTitle();
         $this->slug = $case->getSlug();
         $this->excerpt = $case->getExcerpt();
+        $this->isItemBig = $case->getIsItemBig();
 
         if ($case->getPreviewPicture() instanceof Media) {
             $this->previewPicture = $case->getPreviewPicture();

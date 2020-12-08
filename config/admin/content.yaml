@@ -1,7 +1,7 @@
 services:
   app.admin.case:
     class: App\Admin\CaseAdmin
-    arguments: [~, App\Entity\Cases, SonataAdminBundle:CRUD]
+    arguments: [~, App\Entity\Cases, App\Controller\Admin\ActionController]
     tags:
       - { name: sonata.admin, manager_type: orm, audit: false, group: Кейсы, label: Список кейсов }
 
@@ -31,7 +31,7 @@ services:
 
   app.admin.technology:
     class: App\Admin\TechnologyAdmin
-    arguments: [ ~, App\Entity\Technology, SonataAdminBundle:CRUD ]
+    arguments: [ ~, App\Entity\Technology, App\Controller\Admin\ActionController ]
     tags:
       - { name: sonata.admin, manager_type: orm, audit: false, group: Технологии, label: Список технологий }
 
@@ -73,7 +73,7 @@ services:
 
   app.admin.page:
     class: App\Admin\PageAdmin
-    arguments: [ ~, App\Entity\Page, SonataAdminBundle:CRUD ]
+    arguments: [ ~, App\Entity\Page, App\Controller\Admin\ActionController ]
     tags:
       - { name: sonata.admin, manager_type: orm, audit: false, group: Статичные страницы, label: Страницы }
 

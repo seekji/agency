@@ -20,7 +20,7 @@ class TechnologyBlockAdmin extends AbstractAdmin
         $form
             ->add('groupName')
             ->add('title')
-            ->add('picture', ModelListType::class)
+            ->add('picture', ModelListType::class, ['required' => true, 'help' => 'Детальная картинка'], ['link_parameters' => ['context' => 'technologies']])
             ->add('text', CKEditorType::class)
             ->add('sort', HiddenType::class)
         ;

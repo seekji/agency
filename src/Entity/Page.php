@@ -80,7 +80,8 @@ class Page implements SluggableInterface, TimestampableInterface, LocaleInterfac
     private $history = [];
 
     /**
-     * @ORM\ManyToMany(targetEntity=Specialist::class)
+     * @ORM\ManyToMany(targetEntity=Specialist::class, cascade={"persist"})
+     * @ORM\OrderBy({"sort" = "ASC"})
      */
     private $specialists;
 

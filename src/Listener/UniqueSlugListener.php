@@ -24,6 +24,6 @@ class UniqueSlugListener
             return;
         }
 
-        $entity->setSlug($this->contentService->createUniqueSlug(get_class($entity), $entity->getSlug()));
+        $entity->setSlug($this->contentService->createUniqueSlug(get_class($entity), $entity->getSlug(), $entity->getLocale()));
     }
 }

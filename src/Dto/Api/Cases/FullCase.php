@@ -49,6 +49,11 @@ class FullCase
     /**
      * @Type("string")
      */
+    public ?string $toolsTitle;
+
+    /**
+     * @Type("string")
+     */
     public ?string $offer = null;
 
     /**
@@ -113,6 +118,7 @@ class FullCase
         $this->title = $case->getTitle();
         $this->slug = $case->getSlug();
         $this->excerpt = $case->getExcerpt();
+        $this->toolsTitle = $case->getToolsTitle();
         $this->tools = $case->getTools();
         $this->taskTitle = $case->getTaskTitle();
         $this->runningTitle = $case->getRunningTitle();

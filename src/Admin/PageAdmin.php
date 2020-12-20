@@ -15,6 +15,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Form\Type\AdminType;
 use Sonata\AdminBundle\Form\Type\ChoiceFieldMaskType;
+use Sonata\AdminBundle\Form\Type\ModelAutocompleteType;
 use Sonata\AdminBundle\Form\Type\ModelListType;
 use Sonata\AdminBundle\Form\Type\ModelType;
 use Sonata\AdminBundle\Route\RouteCollection;
@@ -85,7 +86,14 @@ class PageAdmin extends AbstractAdmin
                     ->add('description', CKEditorType::class)
                     // about
                     ->add('excerpt')
-                    ->add('specialists', ModelType::class, ['multiple' => true, 'by_reference' => false])
+                    ->add('specialists', \Sonata\Form\Type\CollectionType::class, [
+                        'type' => AdminType::class,
+                        'by_reference' => true,
+                    ], [
+                        'edit' => 'inline',
+                        'inline' => 'table',
+                        'sortable' => false,
+                    ])
                     ->add('achievements', \Symfony\Component\Form\Extension\Core\Type\CollectionType::class, [
                         'by_reference' => false,
                         'allow_add' => true,

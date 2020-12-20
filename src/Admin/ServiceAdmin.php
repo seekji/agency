@@ -10,6 +10,7 @@ use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Form\Type\ModelListType;
 use Sonata\AdminBundle\Form\Type\ModelType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -62,7 +63,7 @@ class ServiceAdmin extends AbstractAdmin
                         'choices' => array_flip(LocaleInterface::LOCALE_LIST)
                     ])
                     ->add('title')
-                    ->add('media', ModelType::class)
+                    ->add('media', ModelListType::class)
                     ->add('description', CKEditorType::class)
         ;
 

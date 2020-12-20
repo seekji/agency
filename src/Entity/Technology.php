@@ -333,4 +333,29 @@ class Technology implements TimestampableInterface, LocaleInterface, SluggableIn
 
         return $this;
     }
+
+    public function __clone()
+    {
+        $blocks = $this->getBlocks();
+        $this->blocks = new ArrayCollection();
+
+        if (count($blocks) > 0) {
+            foreach ($blocks as $block) {
+                $clonedBlock = clone $block;
+                $this->blocks->add($clonedBlock);
+                $clonedBlock->setTechnology($this);
+            }
+        }
+
+        $aizekIcons = $this->getAizekIcons();
+        $this->AizekIcons = new ArrayCollection();
+
+        if (count($aizekIcons) > 0) {
+            foreach ($aizekIcons as $icon) {
+                $clonedIcon = clone $icon;
+                $this->AizekIcons->add($clonedIcon);
+                $clonedIcon->setTechnology($this);
+            }
+        }
+    }
 }

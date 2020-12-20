@@ -152,7 +152,7 @@ class Cases implements SluggableInterface, TimestampableInterface, LocaleInterfa
     /**
      * @ORM\OneToMany(targetEntity=CaseBlock::class, mappedBy="cases", orphanRemoval=true, cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
-     * @Orm\OrderBy({"sort" = "ASC"})
+     * @ORM\OrderBy({"sort" = "ASC"})
      * @Assert\NotBlank()
      * @Assert\Count(min=1, minMessage="case.blocks.count.min")
      */
@@ -167,6 +167,11 @@ class Cases implements SluggableInterface, TimestampableInterface, LocaleInterfa
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $runningTitle;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $toolsTitle;
 
     public function __construct()
     {
@@ -319,7 +324,7 @@ class Cases implements SluggableInterface, TimestampableInterface, LocaleInterfa
         return $this->taskTitle;
     }
 
-    public function setTaskTitle(string $taskTitle): self
+    public function setTaskTitle(?string $taskTitle): self
     {
         $this->taskTitle = $taskTitle;
 
@@ -418,6 +423,13 @@ class Cases implements SluggableInterface, TimestampableInterface, LocaleInterfa
         return $this->blocks;
     }
 
+    public function setBlocksArray(Collection $blocks): self
+    {
+        $this->blocks = $blocks;
+
+        return $this;
+    }
+
     public function addBlock(CaseBlock $block): self
     {
         if (!$this->blocks->contains($block)) {
@@ -462,5 +474,31 @@ class Cases implements SluggableInterface, TimestampableInterface, LocaleInterfa
         $this->runningTitle = $runningTitle;
 
         return $this;
+    }
+
+    public function getToolsTitle(): ?string
+    {
+        return $this->toolsTitle;
+    }
+
+    public function setToolsTitle(?string $toolsTitle): self
+    {
+        $this->toolsTitle = $toolsTitle;
+
+        return $this;
+    }
+
+    public function __clone()
+    {
+        $blocks = $this->getBlocks();
+        $this->blocks = new ArrayCollection();
+
+        if (count($blocks) > 0) {
+            foreach ($blocks as $block) {
+                $clonedBlock = clone $block;
+                $this->blocks->add($clonedBlock);
+                $clonedBlock->setCases($this);
+            }
+        }
     }
 }

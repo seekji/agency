@@ -9,9 +9,9 @@ use JMS\Serializer\Annotation\Type;
 class Achievement
 {
     /**
-     * @Type("integer")
+     * @Type("string")
      */
-    public int $count;
+    public string $count;
 
     /**
      * @Type("string")
@@ -30,7 +30,7 @@ class Achievement
 
     public function __construct(array $achievement)
     {
-        $this->count = $achievement['count'];
+        $this->count = (string) $achievement['count'];
         $this->countType = $achievement['count_type'] ? : null;
         $this->title = isset($achievement['title']) ? $achievement['title'] : null;
         $this->description = $achievement['description'];

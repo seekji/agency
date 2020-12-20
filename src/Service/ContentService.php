@@ -13,13 +13,15 @@ class ContentService
         $this->entityManager = $entityManager;
     }
 
-    public function createUniqueSlug($entity, $slug): string
+    public function createUniqueSlug($entity, $slug, $locale): string
     {
         $countEntities = 0;
         $entitySlug = $this->entityManager->createQueryBuilder()
             ->select('entity.slug')
             ->from($entity, 'entity')
             ->where('entity.slug LIKE :slug')
+            ->andWhere('entity.locale = :locale')
+            ->setParameter('locale', $locale)
             ->setParameter('slug', "{$slug}%")
             ->orderBy('entity.slug', 'DESC')
             ->andHaving('count(entity.slug) > 0')

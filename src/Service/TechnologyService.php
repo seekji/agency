@@ -24,7 +24,7 @@ class TechnologyService
 
     public function technologies(ListRequest $request): ListResponse
     {
-        $response = new ListResponse($this->technologyRepository->findBy(['locale' => $request->locale, 'isActive' => true], ));
+        $response = new ListResponse($this->technologyRepository->findBy(['locale' => $request->locale, 'isActive' => true], ['sort' => 'ASC']));
 
         $response->limit = $request->limit;
         $response->offset = $request->offset;

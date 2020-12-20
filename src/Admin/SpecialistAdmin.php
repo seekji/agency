@@ -9,6 +9,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Form\Type\ModelListType;
 use Sonata\AdminBundle\Route\RouteCollection;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
 class SpecialistAdmin extends AbstractAdmin
 {
@@ -51,6 +52,7 @@ class SpecialistAdmin extends AbstractAdmin
                     ->add('position')
                     ->add('quote')
                     ->add('picture', ModelListType::class, ['required' => true], ['link_parameters' => ['context' => 'specialists']])
+                    ->add('sort')
                 ->end()
             ->end()
         ;

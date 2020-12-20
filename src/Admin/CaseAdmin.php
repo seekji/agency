@@ -149,6 +149,7 @@ class CaseAdmin extends AbstractAdmin
         ->end()
         ->tab('Остальное')
             ->with('Остальное')
+                ->add('toolsTitle')
                 ->add('tools', CKEditorType::class, ['required' => false])
             ->end()
         ->end()

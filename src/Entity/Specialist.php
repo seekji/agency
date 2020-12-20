@@ -48,6 +48,11 @@ class Specialist implements TimestampableInterface
      */
     private ?Media $picture;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $sort = 0;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -104,5 +109,17 @@ class Specialist implements TimestampableInterface
     public function __toString(): string
     {
         return $this->name ?: '';
+    }
+
+    public function getSort(): ?int
+    {
+        return $this->sort;
+    }
+
+    public function setSort(int $sort): self
+    {
+        $this->sort = $sort;
+
+        return $this;
     }
 }

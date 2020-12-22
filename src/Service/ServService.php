@@ -26,7 +26,7 @@ class ServService
 
     public function findServices(ListRequest $request): ListResponse
     {
-        $response = new ListResponse($this->serviceRepository->findBy(['locale' => $request->locale], null, $request->limit, $request->offset));
+        $response = new ListResponse($this->serviceRepository->findBy(['locale' => $request->locale], ['sort' => 'ASC'], $request->limit, $request->offset));
 
         return $response;
     }

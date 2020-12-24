@@ -13,6 +13,11 @@ traits: !include common.raml
 /cases:
   get:
     is: [hasErrors, hasCommonErrors, localable, pageable]
+    queryParameters:
+      isShowOnHomepage:
+        description: Выводить кейсы только для главной страницы
+        type: number
+        required: false
     description: "Список кейсов"
     responses:
       200:

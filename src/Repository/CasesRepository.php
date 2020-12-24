@@ -38,8 +38,15 @@ class CasesRepository extends ServiceEntityRepository
                 ->setParameter('branches', $request->branches);
         }
 
+        if ($request->isShowOnHomepage !== null) {
+            $query
+                ->andWhere('q.isShowOnHomepage = :isShowOnHomepage')
+                ->setParameter('isShowOnHomepage', $request->isShowOnHomepage);
+        }
+
         return $query
             ->andWhere('q.locale = :locale')
+            ->andWhere('q.isActive = true')
             ->orderBy('q.createdAt', 'DESC')
             ->setParameter('locale', $request->locale)
             ->setFirstResult($request->offset)

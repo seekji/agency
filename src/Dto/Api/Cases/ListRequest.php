@@ -31,4 +31,9 @@ class ListRequest
      */
     public ?array $branches;
 
+    /**
+     * @Type("bool")
+     */
+    public ?bool $isShowOnHomepage = null;
+
 }

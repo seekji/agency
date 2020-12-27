@@ -43,7 +43,12 @@ class TechnologyResponse
     /**
      * @Type("App\Dto\Api\Media\Media")
      */
-    public ?Media $previewPicture = null;
+    public ?Media $media = null;
+
+    /**
+     * @Type("App\Application\Sonata\MediaBundle\Entity\Media")
+     */
+    public ?\App\Application\Sonata\MediaBundle\Entity\Media $previewPicture = null;
 
     /**
      * @Type("App\Application\Sonata\MediaBundle\Entity\Media")
@@ -103,7 +108,11 @@ class TechnologyResponse
         $this->AizekAchievementsTitle = $technology->getAizekAchievementsTitle();
 
         if ($technology->getMedia() instanceof \App\Entity\Media) {
-            $this->previewPicture = new Media($technology->getMedia());
+            $this->media = new Media($technology->getMedia());
+        }
+
+        if ($technology->getPreviewPicture() instanceof \App\Application\Sonata\MediaBundle\Entity\Media) {
+            $this->previewPicture = $technology->getPreviewPicture();
         }
 
         if ($technology->getAizekPictureBlock() instanceof \App\Entity\Media) {

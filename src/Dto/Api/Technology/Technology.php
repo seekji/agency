@@ -49,6 +49,11 @@ class Technology
      */
     public ?\App\Application\Sonata\MediaBundle\Entity\Media $detailPicture = null;
 
+    /**
+     * @Type("App\Application\Sonata\MediaBundle\Entity\Media")
+     */
+    public ?\App\Application\Sonata\MediaBundle\Entity\Media $previewPicture = null;
+
     public function __construct(?\App\Entity\Technology $technology = null)
     {
         $this->id = $technology->getId();
@@ -64,6 +69,10 @@ class Technology
 
         if ($technology->getPicture() instanceof \App\Application\Sonata\MediaBundle\Entity\Media) {
             $this->detailPicture = $technology->getPicture();
+        }
+
+        if ($technology->getPreviewPicture() instanceof \App\Application\Sonata\MediaBundle\Entity\Media) {
+            $this->previewPicture = $technology->getPreviewPicture();
         }
 
     }

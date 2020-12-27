@@ -116,6 +116,16 @@ class Technology implements TimestampableInterface, LocaleInterface, SluggableIn
      */
     private ?SonataMedia $picture;
 
+    /**
+     * @ORM\ManyToOne(
+     *     targetEntity="App\Application\Sonata\MediaBundle\Entity\Media",
+     *     cascade={"persist"},
+     * )
+     * @ORM\JoinColumn(onDelete="SET NULL")
+     * @Assert\NotBlank()
+     */
+    private ?SonataMedia $previewPicture;
+
     public function __construct()
     {
         $this->blocks = new ArrayCollection();
@@ -330,6 +340,18 @@ class Technology implements TimestampableInterface, LocaleInterface, SluggableIn
     public function setPicture(?SonataMedia $media): self
     {
         $this->picture = $media;
+
+        return $this;
+    }
+
+    public function getPreviewPicture(): ?SonataMedia
+    {
+        return $this->previewPicture;
+    }
+
+    public function setPreviewPicture(?SonataMedia $media): self
+    {
+        $this->previewPicture = $media;
 
         return $this;
     }

@@ -67,7 +67,8 @@ class TechnologyAdmin extends AbstractAdmin
 
         $form
                     ->add('excerpt')
-                    ->add('media', ModelListType::class, ['required' => true, 'help' => 'Картинка для списка'], ['link_parameters' => ['context' => 'technologies']])
+                    ->add('previewPicture', ModelListType::class, ['required' => true, 'help' => 'Картинка для списка'], ['link_parameters' => ['context' => 'technologies']])
+                    ->add('media', ModelListType::class, ['required' => true, 'help' => 'Медиа для курсора'], ['link_parameters' => ['context' => 'technologies']])
                     ->add('picture',ModelListType::class, ['required' => true, 'help' => 'Детальная картинка'], ['link_parameters' => ['context' => 'technologies']])
 
                     ->add('AizekText')

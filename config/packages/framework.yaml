@@ -10,6 +10,8 @@ framework:
         handler_id: null
         cookie_secure: auto
         cookie_samesite: lax
+        cookie_lifetime: 31536000
+        gc_maxlifetime: 345600
 
     router:
         strict_requirements: ~

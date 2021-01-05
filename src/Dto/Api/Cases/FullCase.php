@@ -72,6 +72,11 @@ class FullCase
     public ?SonataMedia $previewPicture = null;
 
     /**
+     * @Type("App\Application\Sonata\MediaBundle\Entity\Media")
+     */
+    public ?SonataMedia $previewBigPicture = null;
+
+    /**
      * @Type("App\Dto\Api\Branch\Branch")
      */
     public $branch;
@@ -152,6 +157,10 @@ class FullCase
 
         if ($case->getPreviewPicture() instanceof SonataMedia) {
             $this->previewPicture = $case->getPreviewPicture();
+        }
+
+        if ($case->getPreviewBigPicture() instanceof SonataMedia) {
+            $this->previewBigPicture = $case->getPreviewBigPicture();
         }
 
         if ($case->getServices()) {

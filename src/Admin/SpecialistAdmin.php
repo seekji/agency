@@ -13,12 +13,6 @@ use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
 class SpecialistAdmin extends AbstractAdmin
 {
-    protected function configureRoutes(RouteCollection $collection)
-    {
-        $collection
-            ->remove('delete');
-    }
-
     protected function configureBatchActions($actions)
     {
         if (isset($actions['delete'])) {

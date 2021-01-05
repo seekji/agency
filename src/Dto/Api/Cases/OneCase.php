@@ -46,6 +46,11 @@ class OneCase
      */
     public ?Media $previewPicture = null;
 
+    /**
+     * @Type("App\Application\Sonata\MediaBundle\Entity\Media")
+     */
+    public ?Media $previewBigPicture = null;
+
     public function __construct(?Cases $case = null)
     {
         $this->id = $case->getId();
@@ -56,6 +61,10 @@ class OneCase
 
         if ($case->getPreviewPicture() instanceof Media) {
             $this->previewPicture = $case->getPreviewPicture();
+        }
+
+        if ($case->getPreviewBigPicture() instanceof Media) {
+            $this->previewBigPicture = $case->getPreviewBigPicture();
         }
 
         if ($case->getClient() instanceof Client) {

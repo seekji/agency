@@ -47,7 +47,7 @@ class CasesRepository extends ServiceEntityRepository
         return $query
             ->andWhere('q.locale = :locale')
             ->andWhere('q.isActive = true')
-            ->orderBy('q.createdAt', 'DESC')
+            ->orderBy('q.sort', 'ASC')
             ->setParameter('locale', $request->locale)
             ->setFirstResult($request->offset)
             ->setMaxResults($request->limit)

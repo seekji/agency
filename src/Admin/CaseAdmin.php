@@ -85,6 +85,7 @@ class CaseAdmin extends AbstractAdmin
                 ->add('services', ModelType::class, ['multiple' => true, 'by_reference' => false, 'translation_domain' => 'admin'])
                 ->add('branch', ModelType::class, ['translation_domain' => 'admin'])
                 ->add('previewPicture', ModelListType::class, ['required' => true], ['link_parameters' => ['context' => 'cases']])
+                ->add('previewBigPicture', ModelListType::class, ['required' => false, 'help' => 'Большая картинка для главной'], ['link_parameters' => ['context' => 'cases']])
             ->end()
             ->with('Состояние', ['class' => 'col-md-3'])
                 ->add('locale', ChoiceType::class, [

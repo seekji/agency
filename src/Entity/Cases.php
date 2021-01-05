@@ -80,6 +80,15 @@ class Cases implements SluggableInterface, TimestampableInterface, LocaleInterfa
     private ?SonataMedia $previewPicture;
 
     /**
+     * @ORM\ManyToOne(
+     *     targetEntity="App\Application\Sonata\MediaBundle\Entity\Media",
+     *     cascade={"persist"},
+     * )
+     * @ORM\JoinColumn(onDelete="SET NULL")
+     */
+    private ?SonataMedia $previewBigPicture;
+
+    /**
      * @ORM\Column(type="boolean")
      */
     private $isActive = true;
@@ -257,6 +266,18 @@ class Cases implements SluggableInterface, TimestampableInterface, LocaleInterfa
     public function setPreviewPicture(?SonataMedia $media): self
     {
         $this->previewPicture = $media;
+
+        return $this;
+    }
+
+    public function getPreviewBigPicture(): ?SonataMedia
+    {
+        return $this->previewBigPicture;
+    }
+
+    public function setPreviewBigPicture(?SonataMedia $media): self
+    {
+        $this->previewBigPicture = $media;
 
         return $this;
     }
